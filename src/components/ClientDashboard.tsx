@@ -76,30 +76,33 @@ const ClientDashboard = ({ session }: ClientDashboardProps) => {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-gray-50">
+      <main 
+        className="min-h-screen bg-cover bg-center bg-no-repeat" 
+        style={{ 
+          backgroundImage: 'url("/dashboard-bg.avif")',
+          color: 'rgb(228, 234, 107)'
+        }}
+      >
+        
         <div className="max-w-4xl mx-auto py-8 px-4">
-          <header className="mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">Your Dashboard</h1>
-          </header>
-
-          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">Profile</h2>
+          <div className=" bg-opacity-40 backdrop-blur-md rounded-lg shadow-lg p-6 mb-8 border border-white border-opacity-20">
+            <h2 className="text-2xl font-bold mb-4 text-black font-serif">Profile</h2>
             <div className="space-y-4">
               <div>
-                <h3 className="text-gray-600">Name</h3>
-                <p className="text-gray-800 font-medium">{user?.name}</p>
+                <h3 className="text-gray-300 font-serif">Name</h3>
+                <p className="text-white font-medium">{user?.name}</p>
               </div>
               <div>
-                <h3 className="text-gray-600">Country</h3>
-                <p className="text-gray-800 font-medium">{user?.country}</p>
+                <h3 className="text-gray-300 font-serif">Country</h3>
+                <p className="text-white font-medium">{user?.country}</p>
               </div>
               <div>
-                <h3 className="text-gray-600">Interests</h3>
+                <h3 className="text-gray-300 font-serif">Interests</h3>
                 <div className="flex flex-wrap gap-2 mt-2">
                   {user?.interests.map((interest) => (
                     <span
                       key={interest}
-                      className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm"
+                      className="bg-white bg-opacity-20 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm border border-white border-opacity-30"
                     >
                       {interest}
                     </span>
@@ -110,32 +113,35 @@ const ClientDashboard = ({ session }: ClientDashboardProps) => {
           </div>
 
           <div className="space-y-8">
-            <section>
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">My Questions</h2>
+            <section className=" bg-opacity-40 backdrop-blur-md rounded-lg shadow-lg p-6 border border-white border-opacity-20">
+              <h2 className="text-2xl font-bold mb-4" style={{ color: 'rgb(228, 234, 107)' }}>My Questions</h2>
               {(user?.questions ?? []).length > 0 ? (
-                user?.questions.map((question) => (
-                  <QuestionCard
-                    key={question.id}
-                    question={question}
-                    onLike={handleLike}
-                    onDislike={handleDislike}
-                    onReply={handleReply}
-                    onViewReplies={handleViewReplies}
-                  />
-                ))
+                <div className="space-y-4">
+                  {user?.questions.map((question) => (
+                    <div key={question.id} className=" bg-opacity-10 backdrop-blur-sm rounded-lg p-4 border border-white border-opacity-20">
+                      <QuestionCard
+                        question={question}
+                        onLike={handleLike}
+                        onDislike={handleDislike}
+                        onReply={handleReply}
+                        onViewReplies={handleViewReplies}
+                      />
+                    </div>
+                  ))}
+                </div>
               ) : (
-                <p className="text-gray-600">You haven't asked any questions yet.</p>
+                <p className="text-gray-300">You haven't asked any questions yet.</p>
               )}
             </section>
 
-            <section>
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">My Replies</h2>
+            <section className="bg-opacity-40 backdrop-blur-md rounded-lg shadow-lg p-6 border border-white border-opacity-20">
+              <h2 className="text-2xl font-bold mb-4" style={{ color: 'rgb(228, 234, 107)' }}>My Replies</h2>
               {(user?.replies ?? []).length > 0 ? (
                 <div className="space-y-4">
                   {user?.replies.map((reply) => (
-                    <div key={reply.id} className="bg-white rounded-lg shadow-md p-6">
-                      <p className="text-gray-800 mb-2">{reply.content}</p>
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <div key={reply.id} className=" bg-opacity-10 backdrop-blur-sm rounded-lg shadow-md p-6 border border-white border-opacity-20">
+                      <p className="text-white mb-2">{reply.content}</p>
+                      <div className="flex items-center gap-2 text-sm text-gray-300">
                         <span>Likes: {reply.likes}</span>
                         <span>•</span>
                         <span>
@@ -146,7 +152,7 @@ const ClientDashboard = ({ session }: ClientDashboardProps) => {
                   ))}
                 </div>
               ) : (
-                <p className="text-gray-600">You haven't replied to any questions yet.</p>
+                <p className="text-gray-300">You haven't replied to any questions yet.</p>
               )}
             </section>
           </div>

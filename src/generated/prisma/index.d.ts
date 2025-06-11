@@ -49,10 +49,10 @@ export type Reply = $Result.DefaultSelection<Prisma.$ReplyPayload>
  */
 export type WeeklyStar = $Result.DefaultSelection<Prisma.$WeeklyStarPayload>
 /**
- * Model VideoReview
+ * Model Review
  * 
  */
-export type VideoReview = $Result.DefaultSelection<Prisma.$VideoReviewPayload>
+export type Review = $Result.DefaultSelection<Prisma.$ReviewPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -250,14 +250,14 @@ export class PrismaClient<
   get weeklyStar(): Prisma.WeeklyStarDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.videoReview`: Exposes CRUD operations for the **VideoReview** model.
+   * `prisma.review`: Exposes CRUD operations for the **Review** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more VideoReviews
-    * const videoReviews = await prisma.videoReview.findMany()
+    * // Fetch zero or more Reviews
+    * const reviews = await prisma.review.findMany()
     * ```
     */
-  get videoReview(): Prisma.VideoReviewDelegate<ExtArgs, ClientOptions>;
+  get review(): Prisma.ReviewDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -705,7 +705,7 @@ export namespace Prisma {
     Question: 'Question',
     Reply: 'Reply',
     WeeklyStar: 'WeeklyStar',
-    VideoReview: 'VideoReview'
+    Review: 'Review'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -724,7 +724,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "account" | "session" | "verificationToken" | "user" | "question" | "reply" | "weeklyStar" | "videoReview"
+      modelProps: "account" | "session" | "verificationToken" | "user" | "question" | "reply" | "weeklyStar" | "review"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1246,77 +1246,77 @@ export namespace Prisma {
           }
         }
       }
-      VideoReview: {
-        payload: Prisma.$VideoReviewPayload<ExtArgs>
-        fields: Prisma.VideoReviewFieldRefs
+      Review: {
+        payload: Prisma.$ReviewPayload<ExtArgs>
+        fields: Prisma.ReviewFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.VideoReviewFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VideoReviewPayload> | null
+            args: Prisma.ReviewFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.VideoReviewFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VideoReviewPayload>
+            args: Prisma.ReviewFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
           }
           findFirst: {
-            args: Prisma.VideoReviewFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VideoReviewPayload> | null
+            args: Prisma.ReviewFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.VideoReviewFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VideoReviewPayload>
+            args: Prisma.ReviewFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
           }
           findMany: {
-            args: Prisma.VideoReviewFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VideoReviewPayload>[]
+            args: Prisma.ReviewFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[]
           }
           create: {
-            args: Prisma.VideoReviewCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VideoReviewPayload>
+            args: Prisma.ReviewCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
           }
           createMany: {
-            args: Prisma.VideoReviewCreateManyArgs<ExtArgs>
+            args: Prisma.ReviewCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.VideoReviewCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VideoReviewPayload>[]
+            args: Prisma.ReviewCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[]
           }
           delete: {
-            args: Prisma.VideoReviewDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VideoReviewPayload>
+            args: Prisma.ReviewDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
           }
           update: {
-            args: Prisma.VideoReviewUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VideoReviewPayload>
+            args: Prisma.ReviewUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
           }
           deleteMany: {
-            args: Prisma.VideoReviewDeleteManyArgs<ExtArgs>
+            args: Prisma.ReviewDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.VideoReviewUpdateManyArgs<ExtArgs>
+            args: Prisma.ReviewUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.VideoReviewUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VideoReviewPayload>[]
+            args: Prisma.ReviewUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[]
           }
           upsert: {
-            args: Prisma.VideoReviewUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VideoReviewPayload>
+            args: Prisma.ReviewUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
           }
           aggregate: {
-            args: Prisma.VideoReviewAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateVideoReview>
+            args: Prisma.ReviewAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateReview>
           }
           groupBy: {
-            args: Prisma.VideoReviewGroupByArgs<ExtArgs>
-            result: $Utils.Optional<VideoReviewGroupByOutputType>[]
+            args: Prisma.ReviewGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ReviewGroupByOutputType>[]
           }
           count: {
-            args: Prisma.VideoReviewCountArgs<ExtArgs>
-            result: $Utils.Optional<VideoReviewCountAggregateOutputType> | number
+            args: Prisma.ReviewCountArgs<ExtArgs>
+            result: $Utils.Optional<ReviewCountAggregateOutputType> | number
           }
         }
       }
@@ -1411,7 +1411,7 @@ export namespace Prisma {
     question?: QuestionOmit
     reply?: ReplyOmit
     weeklyStar?: WeeklyStarOmit
-    videoReview?: VideoReviewOmit
+    review?: ReviewOmit
   }
 
   /* Types for Logging */
@@ -1564,7 +1564,7 @@ export namespace Prisma {
    * UserCountOutputType without action
    */
   export type UserCountOutputTypeCountVideoReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: VideoReviewWhereInput
+    where?: ReviewWhereInput
   }
 
 
@@ -5066,7 +5066,7 @@ export namespace Prisma {
       sessions: Prisma.$SessionPayload<ExtArgs>[]
       questions: Prisma.$QuestionPayload<ExtArgs>[]
       replies: Prisma.$ReplyPayload<ExtArgs>[]
-      videoReviews: Prisma.$VideoReviewPayload<ExtArgs>[]
+      videoReviews: Prisma.$ReviewPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5477,7 +5477,7 @@ export namespace Prisma {
     sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     questions<T extends User$questionsArgs<ExtArgs> = {}>(args?: Subset<T, User$questionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuestionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     replies<T extends User$repliesArgs<ExtArgs> = {}>(args?: Subset<T, User$repliesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReplyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    videoReviews<T extends User$videoReviewsArgs<ExtArgs> = {}>(args?: Subset<T, User$videoReviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideoReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    videoReviews<T extends User$videoReviewsArgs<ExtArgs> = {}>(args?: Subset<T, User$videoReviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6005,23 +6005,23 @@ export namespace Prisma {
    */
   export type User$videoReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VideoReview
+     * Select specific fields to fetch from the Review
      */
-    select?: VideoReviewSelect<ExtArgs> | null
+    select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VideoReview
+     * Omit specific fields from the Review
      */
-    omit?: VideoReviewOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VideoReviewInclude<ExtArgs> | null
-    where?: VideoReviewWhereInput
-    orderBy?: VideoReviewOrderByWithRelationInput | VideoReviewOrderByWithRelationInput[]
-    cursor?: VideoReviewWhereUniqueInput
+    include?: ReviewInclude<ExtArgs> | null
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    cursor?: ReviewWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: VideoReviewScalarFieldEnum | VideoReviewScalarFieldEnum[]
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
   }
 
   /**
@@ -9506,464 +9506,488 @@ export namespace Prisma {
 
 
   /**
-   * Model VideoReview
+   * Model Review
    */
 
-  export type AggregateVideoReview = {
-    _count: VideoReviewCountAggregateOutputType | null
-    _avg: VideoReviewAvgAggregateOutputType | null
-    _sum: VideoReviewSumAggregateOutputType | null
-    _min: VideoReviewMinAggregateOutputType | null
-    _max: VideoReviewMaxAggregateOutputType | null
+  export type AggregateReview = {
+    _count: ReviewCountAggregateOutputType | null
+    _avg: ReviewAvgAggregateOutputType | null
+    _sum: ReviewSumAggregateOutputType | null
+    _min: ReviewMinAggregateOutputType | null
+    _max: ReviewMaxAggregateOutputType | null
   }
 
-  export type VideoReviewAvgAggregateOutputType = {
+  export type ReviewAvgAggregateOutputType = {
     rating: number | null
-    likes: number | null
-    dislikes: number | null
+    views: number | null
+    agreements: number | null
   }
 
-  export type VideoReviewSumAggregateOutputType = {
+  export type ReviewSumAggregateOutputType = {
     rating: number | null
-    likes: number | null
-    dislikes: number | null
+    views: number | null
+    agreements: number | null
   }
 
-  export type VideoReviewMinAggregateOutputType = {
+  export type ReviewMinAggregateOutputType = {
     id: string | null
     title: string | null
-    youtubeUrl: string | null
+    videoUrl: string | null
+    imageUrl: string | null
+    thumbnailUrl: string | null
     category: string | null
     description: string | null
     rating: number | null
-    likes: number | null
-    dislikes: number | null
+    views: number | null
     createdAt: Date | null
     updatedAt: Date | null
     userId: string | null
+    agreements: number | null
   }
 
-  export type VideoReviewMaxAggregateOutputType = {
+  export type ReviewMaxAggregateOutputType = {
     id: string | null
     title: string | null
-    youtubeUrl: string | null
+    videoUrl: string | null
+    imageUrl: string | null
+    thumbnailUrl: string | null
     category: string | null
     description: string | null
     rating: number | null
-    likes: number | null
-    dislikes: number | null
+    views: number | null
     createdAt: Date | null
     updatedAt: Date | null
     userId: string | null
+    agreements: number | null
   }
 
-  export type VideoReviewCountAggregateOutputType = {
+  export type ReviewCountAggregateOutputType = {
     id: number
     title: number
-    youtubeUrl: number
+    videoUrl: number
+    imageUrl: number
+    thumbnailUrl: number
     category: number
     description: number
     rating: number
-    likes: number
-    dislikes: number
+    views: number
     createdAt: number
     updatedAt: number
     userId: number
+    agreements: number
     _all: number
   }
 
 
-  export type VideoReviewAvgAggregateInputType = {
+  export type ReviewAvgAggregateInputType = {
     rating?: true
-    likes?: true
-    dislikes?: true
+    views?: true
+    agreements?: true
   }
 
-  export type VideoReviewSumAggregateInputType = {
+  export type ReviewSumAggregateInputType = {
     rating?: true
-    likes?: true
-    dislikes?: true
+    views?: true
+    agreements?: true
   }
 
-  export type VideoReviewMinAggregateInputType = {
+  export type ReviewMinAggregateInputType = {
     id?: true
     title?: true
-    youtubeUrl?: true
+    videoUrl?: true
+    imageUrl?: true
+    thumbnailUrl?: true
     category?: true
     description?: true
     rating?: true
-    likes?: true
-    dislikes?: true
+    views?: true
     createdAt?: true
     updatedAt?: true
     userId?: true
+    agreements?: true
   }
 
-  export type VideoReviewMaxAggregateInputType = {
+  export type ReviewMaxAggregateInputType = {
     id?: true
     title?: true
-    youtubeUrl?: true
+    videoUrl?: true
+    imageUrl?: true
+    thumbnailUrl?: true
     category?: true
     description?: true
     rating?: true
-    likes?: true
-    dislikes?: true
+    views?: true
     createdAt?: true
     updatedAt?: true
     userId?: true
+    agreements?: true
   }
 
-  export type VideoReviewCountAggregateInputType = {
+  export type ReviewCountAggregateInputType = {
     id?: true
     title?: true
-    youtubeUrl?: true
+    videoUrl?: true
+    imageUrl?: true
+    thumbnailUrl?: true
     category?: true
     description?: true
     rating?: true
-    likes?: true
-    dislikes?: true
+    views?: true
     createdAt?: true
     updatedAt?: true
     userId?: true
+    agreements?: true
     _all?: true
   }
 
-  export type VideoReviewAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which VideoReview to aggregate.
+     * Filter which Review to aggregate.
      */
-    where?: VideoReviewWhereInput
+    where?: ReviewWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of VideoReviews to fetch.
+     * Determine the order of Reviews to fetch.
      */
-    orderBy?: VideoReviewOrderByWithRelationInput | VideoReviewOrderByWithRelationInput[]
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: VideoReviewWhereUniqueInput
+    cursor?: ReviewWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` VideoReviews from the position of the cursor.
+     * Take `±n` Reviews from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` VideoReviews.
+     * Skip the first `n` Reviews.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned VideoReviews
+     * Count returned Reviews
     **/
-    _count?: true | VideoReviewCountAggregateInputType
+    _count?: true | ReviewCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: VideoReviewAvgAggregateInputType
+    _avg?: ReviewAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: VideoReviewSumAggregateInputType
+    _sum?: ReviewSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: VideoReviewMinAggregateInputType
+    _min?: ReviewMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: VideoReviewMaxAggregateInputType
+    _max?: ReviewMaxAggregateInputType
   }
 
-  export type GetVideoReviewAggregateType<T extends VideoReviewAggregateArgs> = {
-        [P in keyof T & keyof AggregateVideoReview]: P extends '_count' | 'count'
+  export type GetReviewAggregateType<T extends ReviewAggregateArgs> = {
+        [P in keyof T & keyof AggregateReview]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateVideoReview[P]>
-      : GetScalarType<T[P], AggregateVideoReview[P]>
+        : GetScalarType<T[P], AggregateReview[P]>
+      : GetScalarType<T[P], AggregateReview[P]>
   }
 
 
 
 
-  export type VideoReviewGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: VideoReviewWhereInput
-    orderBy?: VideoReviewOrderByWithAggregationInput | VideoReviewOrderByWithAggregationInput[]
-    by: VideoReviewScalarFieldEnum[] | VideoReviewScalarFieldEnum
-    having?: VideoReviewScalarWhereWithAggregatesInput
+  export type ReviewGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByWithAggregationInput | ReviewOrderByWithAggregationInput[]
+    by: ReviewScalarFieldEnum[] | ReviewScalarFieldEnum
+    having?: ReviewScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: VideoReviewCountAggregateInputType | true
-    _avg?: VideoReviewAvgAggregateInputType
-    _sum?: VideoReviewSumAggregateInputType
-    _min?: VideoReviewMinAggregateInputType
-    _max?: VideoReviewMaxAggregateInputType
+    _count?: ReviewCountAggregateInputType | true
+    _avg?: ReviewAvgAggregateInputType
+    _sum?: ReviewSumAggregateInputType
+    _min?: ReviewMinAggregateInputType
+    _max?: ReviewMaxAggregateInputType
   }
 
-  export type VideoReviewGroupByOutputType = {
+  export type ReviewGroupByOutputType = {
     id: string
     title: string
-    youtubeUrl: string
+    videoUrl: string | null
+    imageUrl: string | null
+    thumbnailUrl: string | null
     category: string
     description: string
     rating: number
-    likes: number
-    dislikes: number
+    views: number
     createdAt: Date
     updatedAt: Date
     userId: string
-    _count: VideoReviewCountAggregateOutputType | null
-    _avg: VideoReviewAvgAggregateOutputType | null
-    _sum: VideoReviewSumAggregateOutputType | null
-    _min: VideoReviewMinAggregateOutputType | null
-    _max: VideoReviewMaxAggregateOutputType | null
+    agreements: number
+    _count: ReviewCountAggregateOutputType | null
+    _avg: ReviewAvgAggregateOutputType | null
+    _sum: ReviewSumAggregateOutputType | null
+    _min: ReviewMinAggregateOutputType | null
+    _max: ReviewMaxAggregateOutputType | null
   }
 
-  type GetVideoReviewGroupByPayload<T extends VideoReviewGroupByArgs> = Prisma.PrismaPromise<
+  type GetReviewGroupByPayload<T extends ReviewGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<VideoReviewGroupByOutputType, T['by']> &
+      PickEnumerable<ReviewGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof VideoReviewGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ReviewGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], VideoReviewGroupByOutputType[P]>
-            : GetScalarType<T[P], VideoReviewGroupByOutputType[P]>
+              : GetScalarType<T[P], ReviewGroupByOutputType[P]>
+            : GetScalarType<T[P], ReviewGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type VideoReviewSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ReviewSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
-    youtubeUrl?: boolean
+    videoUrl?: boolean
+    imageUrl?: boolean
+    thumbnailUrl?: boolean
     category?: boolean
     description?: boolean
     rating?: boolean
-    likes?: boolean
-    dislikes?: boolean
+    views?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
+    agreements?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["videoReview"]>
+  }, ExtArgs["result"]["review"]>
 
-  export type VideoReviewSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ReviewSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
-    youtubeUrl?: boolean
+    videoUrl?: boolean
+    imageUrl?: boolean
+    thumbnailUrl?: boolean
     category?: boolean
     description?: boolean
     rating?: boolean
-    likes?: boolean
-    dislikes?: boolean
+    views?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
+    agreements?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["videoReview"]>
+  }, ExtArgs["result"]["review"]>
 
-  export type VideoReviewSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ReviewSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
-    youtubeUrl?: boolean
+    videoUrl?: boolean
+    imageUrl?: boolean
+    thumbnailUrl?: boolean
     category?: boolean
     description?: boolean
     rating?: boolean
-    likes?: boolean
-    dislikes?: boolean
+    views?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
+    agreements?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["videoReview"]>
+  }, ExtArgs["result"]["review"]>
 
-  export type VideoReviewSelectScalar = {
+  export type ReviewSelectScalar = {
     id?: boolean
     title?: boolean
-    youtubeUrl?: boolean
+    videoUrl?: boolean
+    imageUrl?: boolean
+    thumbnailUrl?: boolean
     category?: boolean
     description?: boolean
     rating?: boolean
-    likes?: boolean
-    dislikes?: boolean
+    views?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
+    agreements?: boolean
   }
 
-  export type VideoReviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "youtubeUrl" | "category" | "description" | "rating" | "likes" | "dislikes" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["videoReview"]>
-  export type VideoReviewInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "videoUrl" | "imageUrl" | "thumbnailUrl" | "category" | "description" | "rating" | "views" | "createdAt" | "updatedAt" | "userId" | "agreements", ExtArgs["result"]["review"]>
+  export type ReviewInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
-  export type VideoReviewIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
-  export type VideoReviewIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
-  export type $VideoReviewPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "VideoReview"
+  export type $ReviewPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Review"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       title: string
-      youtubeUrl: string
+      videoUrl: string | null
+      imageUrl: string | null
+      thumbnailUrl: string | null
       category: string
       description: string
       rating: number
-      likes: number
-      dislikes: number
+      views: number
       createdAt: Date
       updatedAt: Date
       userId: string
-    }, ExtArgs["result"]["videoReview"]>
+      agreements: number
+    }, ExtArgs["result"]["review"]>
     composites: {}
   }
 
-  type VideoReviewGetPayload<S extends boolean | null | undefined | VideoReviewDefaultArgs> = $Result.GetResult<Prisma.$VideoReviewPayload, S>
+  type ReviewGetPayload<S extends boolean | null | undefined | ReviewDefaultArgs> = $Result.GetResult<Prisma.$ReviewPayload, S>
 
-  type VideoReviewCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<VideoReviewFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: VideoReviewCountAggregateInputType | true
+  type ReviewCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ReviewFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ReviewCountAggregateInputType | true
     }
 
-  export interface VideoReviewDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['VideoReview'], meta: { name: 'VideoReview' } }
+  export interface ReviewDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Review'], meta: { name: 'Review' } }
     /**
-     * Find zero or one VideoReview that matches the filter.
-     * @param {VideoReviewFindUniqueArgs} args - Arguments to find a VideoReview
+     * Find zero or one Review that matches the filter.
+     * @param {ReviewFindUniqueArgs} args - Arguments to find a Review
      * @example
-     * // Get one VideoReview
-     * const videoReview = await prisma.videoReview.findUnique({
+     * // Get one Review
+     * const review = await prisma.review.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends VideoReviewFindUniqueArgs>(args: SelectSubset<T, VideoReviewFindUniqueArgs<ExtArgs>>): Prisma__VideoReviewClient<$Result.GetResult<Prisma.$VideoReviewPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends ReviewFindUniqueArgs>(args: SelectSubset<T, ReviewFindUniqueArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one VideoReview that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Review that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {VideoReviewFindUniqueOrThrowArgs} args - Arguments to find a VideoReview
+     * @param {ReviewFindUniqueOrThrowArgs} args - Arguments to find a Review
      * @example
-     * // Get one VideoReview
-     * const videoReview = await prisma.videoReview.findUniqueOrThrow({
+     * // Get one Review
+     * const review = await prisma.review.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends VideoReviewFindUniqueOrThrowArgs>(args: SelectSubset<T, VideoReviewFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VideoReviewClient<$Result.GetResult<Prisma.$VideoReviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends ReviewFindUniqueOrThrowArgs>(args: SelectSubset<T, ReviewFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first VideoReview that matches the filter.
+     * Find the first Review that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VideoReviewFindFirstArgs} args - Arguments to find a VideoReview
+     * @param {ReviewFindFirstArgs} args - Arguments to find a Review
      * @example
-     * // Get one VideoReview
-     * const videoReview = await prisma.videoReview.findFirst({
+     * // Get one Review
+     * const review = await prisma.review.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends VideoReviewFindFirstArgs>(args?: SelectSubset<T, VideoReviewFindFirstArgs<ExtArgs>>): Prisma__VideoReviewClient<$Result.GetResult<Prisma.$VideoReviewPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends ReviewFindFirstArgs>(args?: SelectSubset<T, ReviewFindFirstArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first VideoReview that matches the filter or
+     * Find the first Review that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VideoReviewFindFirstOrThrowArgs} args - Arguments to find a VideoReview
+     * @param {ReviewFindFirstOrThrowArgs} args - Arguments to find a Review
      * @example
-     * // Get one VideoReview
-     * const videoReview = await prisma.videoReview.findFirstOrThrow({
+     * // Get one Review
+     * const review = await prisma.review.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends VideoReviewFindFirstOrThrowArgs>(args?: SelectSubset<T, VideoReviewFindFirstOrThrowArgs<ExtArgs>>): Prisma__VideoReviewClient<$Result.GetResult<Prisma.$VideoReviewPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends ReviewFindFirstOrThrowArgs>(args?: SelectSubset<T, ReviewFindFirstOrThrowArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more VideoReviews that matches the filter.
+     * Find zero or more Reviews that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VideoReviewFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {ReviewFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all VideoReviews
-     * const videoReviews = await prisma.videoReview.findMany()
+     * // Get all Reviews
+     * const reviews = await prisma.review.findMany()
      * 
-     * // Get first 10 VideoReviews
-     * const videoReviews = await prisma.videoReview.findMany({ take: 10 })
+     * // Get first 10 Reviews
+     * const reviews = await prisma.review.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const videoReviewWithIdOnly = await prisma.videoReview.findMany({ select: { id: true } })
+     * const reviewWithIdOnly = await prisma.review.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends VideoReviewFindManyArgs>(args?: SelectSubset<T, VideoReviewFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideoReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends ReviewFindManyArgs>(args?: SelectSubset<T, ReviewFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a VideoReview.
-     * @param {VideoReviewCreateArgs} args - Arguments to create a VideoReview.
+     * Create a Review.
+     * @param {ReviewCreateArgs} args - Arguments to create a Review.
      * @example
-     * // Create one VideoReview
-     * const VideoReview = await prisma.videoReview.create({
+     * // Create one Review
+     * const Review = await prisma.review.create({
      *   data: {
-     *     // ... data to create a VideoReview
+     *     // ... data to create a Review
      *   }
      * })
      * 
      */
-    create<T extends VideoReviewCreateArgs>(args: SelectSubset<T, VideoReviewCreateArgs<ExtArgs>>): Prisma__VideoReviewClient<$Result.GetResult<Prisma.$VideoReviewPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends ReviewCreateArgs>(args: SelectSubset<T, ReviewCreateArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many VideoReviews.
-     * @param {VideoReviewCreateManyArgs} args - Arguments to create many VideoReviews.
+     * Create many Reviews.
+     * @param {ReviewCreateManyArgs} args - Arguments to create many Reviews.
      * @example
-     * // Create many VideoReviews
-     * const videoReview = await prisma.videoReview.createMany({
+     * // Create many Reviews
+     * const review = await prisma.review.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends VideoReviewCreateManyArgs>(args?: SelectSubset<T, VideoReviewCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends ReviewCreateManyArgs>(args?: SelectSubset<T, ReviewCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many VideoReviews and returns the data saved in the database.
-     * @param {VideoReviewCreateManyAndReturnArgs} args - Arguments to create many VideoReviews.
+     * Create many Reviews and returns the data saved in the database.
+     * @param {ReviewCreateManyAndReturnArgs} args - Arguments to create many Reviews.
      * @example
-     * // Create many VideoReviews
-     * const videoReview = await prisma.videoReview.createManyAndReturn({
+     * // Create many Reviews
+     * const review = await prisma.review.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many VideoReviews and only return the `id`
-     * const videoReviewWithIdOnly = await prisma.videoReview.createManyAndReturn({
+     * // Create many Reviews and only return the `id`
+     * const reviewWithIdOnly = await prisma.review.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -9973,28 +9997,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends VideoReviewCreateManyAndReturnArgs>(args?: SelectSubset<T, VideoReviewCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideoReviewPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends ReviewCreateManyAndReturnArgs>(args?: SelectSubset<T, ReviewCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a VideoReview.
-     * @param {VideoReviewDeleteArgs} args - Arguments to delete one VideoReview.
+     * Delete a Review.
+     * @param {ReviewDeleteArgs} args - Arguments to delete one Review.
      * @example
-     * // Delete one VideoReview
-     * const VideoReview = await prisma.videoReview.delete({
+     * // Delete one Review
+     * const Review = await prisma.review.delete({
      *   where: {
-     *     // ... filter to delete one VideoReview
+     *     // ... filter to delete one Review
      *   }
      * })
      * 
      */
-    delete<T extends VideoReviewDeleteArgs>(args: SelectSubset<T, VideoReviewDeleteArgs<ExtArgs>>): Prisma__VideoReviewClient<$Result.GetResult<Prisma.$VideoReviewPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends ReviewDeleteArgs>(args: SelectSubset<T, ReviewDeleteArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one VideoReview.
-     * @param {VideoReviewUpdateArgs} args - Arguments to update one VideoReview.
+     * Update one Review.
+     * @param {ReviewUpdateArgs} args - Arguments to update one Review.
      * @example
-     * // Update one VideoReview
-     * const videoReview = await prisma.videoReview.update({
+     * // Update one Review
+     * const review = await prisma.review.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -10004,30 +10028,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends VideoReviewUpdateArgs>(args: SelectSubset<T, VideoReviewUpdateArgs<ExtArgs>>): Prisma__VideoReviewClient<$Result.GetResult<Prisma.$VideoReviewPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends ReviewUpdateArgs>(args: SelectSubset<T, ReviewUpdateArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more VideoReviews.
-     * @param {VideoReviewDeleteManyArgs} args - Arguments to filter VideoReviews to delete.
+     * Delete zero or more Reviews.
+     * @param {ReviewDeleteManyArgs} args - Arguments to filter Reviews to delete.
      * @example
-     * // Delete a few VideoReviews
-     * const { count } = await prisma.videoReview.deleteMany({
+     * // Delete a few Reviews
+     * const { count } = await prisma.review.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends VideoReviewDeleteManyArgs>(args?: SelectSubset<T, VideoReviewDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends ReviewDeleteManyArgs>(args?: SelectSubset<T, ReviewDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more VideoReviews.
+     * Update zero or more Reviews.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VideoReviewUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ReviewUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many VideoReviews
-     * const videoReview = await prisma.videoReview.updateMany({
+     * // Update many Reviews
+     * const review = await prisma.review.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -10037,14 +10061,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends VideoReviewUpdateManyArgs>(args: SelectSubset<T, VideoReviewUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends ReviewUpdateManyArgs>(args: SelectSubset<T, ReviewUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more VideoReviews and returns the data updated in the database.
-     * @param {VideoReviewUpdateManyAndReturnArgs} args - Arguments to update many VideoReviews.
+     * Update zero or more Reviews and returns the data updated in the database.
+     * @param {ReviewUpdateManyAndReturnArgs} args - Arguments to update many Reviews.
      * @example
-     * // Update many VideoReviews
-     * const videoReview = await prisma.videoReview.updateManyAndReturn({
+     * // Update many Reviews
+     * const review = await prisma.review.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -10053,8 +10077,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more VideoReviews and only return the `id`
-     * const videoReviewWithIdOnly = await prisma.videoReview.updateManyAndReturn({
+     * // Update zero or more Reviews and only return the `id`
+     * const reviewWithIdOnly = await prisma.review.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -10067,56 +10091,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends VideoReviewUpdateManyAndReturnArgs>(args: SelectSubset<T, VideoReviewUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideoReviewPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends ReviewUpdateManyAndReturnArgs>(args: SelectSubset<T, ReviewUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one VideoReview.
-     * @param {VideoReviewUpsertArgs} args - Arguments to update or create a VideoReview.
+     * Create or update one Review.
+     * @param {ReviewUpsertArgs} args - Arguments to update or create a Review.
      * @example
-     * // Update or create a VideoReview
-     * const videoReview = await prisma.videoReview.upsert({
+     * // Update or create a Review
+     * const review = await prisma.review.upsert({
      *   create: {
-     *     // ... data to create a VideoReview
+     *     // ... data to create a Review
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the VideoReview we want to update
+     *     // ... the filter for the Review we want to update
      *   }
      * })
      */
-    upsert<T extends VideoReviewUpsertArgs>(args: SelectSubset<T, VideoReviewUpsertArgs<ExtArgs>>): Prisma__VideoReviewClient<$Result.GetResult<Prisma.$VideoReviewPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends ReviewUpsertArgs>(args: SelectSubset<T, ReviewUpsertArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of VideoReviews.
+     * Count the number of Reviews.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VideoReviewCountArgs} args - Arguments to filter VideoReviews to count.
+     * @param {ReviewCountArgs} args - Arguments to filter Reviews to count.
      * @example
-     * // Count the number of VideoReviews
-     * const count = await prisma.videoReview.count({
+     * // Count the number of Reviews
+     * const count = await prisma.review.count({
      *   where: {
-     *     // ... the filter for the VideoReviews we want to count
+     *     // ... the filter for the Reviews we want to count
      *   }
      * })
     **/
-    count<T extends VideoReviewCountArgs>(
-      args?: Subset<T, VideoReviewCountArgs>,
+    count<T extends ReviewCountArgs>(
+      args?: Subset<T, ReviewCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], VideoReviewCountAggregateOutputType>
+          : GetScalarType<T['select'], ReviewCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a VideoReview.
+     * Allows you to perform aggregations operations on a Review.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VideoReviewAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ReviewAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -10136,13 +10160,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends VideoReviewAggregateArgs>(args: Subset<T, VideoReviewAggregateArgs>): Prisma.PrismaPromise<GetVideoReviewAggregateType<T>>
+    aggregate<T extends ReviewAggregateArgs>(args: Subset<T, ReviewAggregateArgs>): Prisma.PrismaPromise<GetReviewAggregateType<T>>
 
     /**
-     * Group by VideoReview.
+     * Group by Review.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VideoReviewGroupByArgs} args - Group by arguments.
+     * @param {ReviewGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -10157,14 +10181,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends VideoReviewGroupByArgs,
+      T extends ReviewGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: VideoReviewGroupByArgs['orderBy'] }
-        : { orderBy?: VideoReviewGroupByArgs['orderBy'] },
+        ? { orderBy: ReviewGroupByArgs['orderBy'] }
+        : { orderBy?: ReviewGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -10213,20 +10237,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, VideoReviewGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVideoReviewGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ReviewGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReviewGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the VideoReview model
+   * Fields of the Review model
    */
-  readonly fields: VideoReviewFieldRefs;
+  readonly fields: ReviewFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for VideoReview.
+   * The delegate class that acts as a "Promise-like" for Review.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__VideoReviewClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ReviewClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -10255,431 +10279,433 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the VideoReview model
+   * Fields of the Review model
    */
-  interface VideoReviewFieldRefs {
-    readonly id: FieldRef<"VideoReview", 'String'>
-    readonly title: FieldRef<"VideoReview", 'String'>
-    readonly youtubeUrl: FieldRef<"VideoReview", 'String'>
-    readonly category: FieldRef<"VideoReview", 'String'>
-    readonly description: FieldRef<"VideoReview", 'String'>
-    readonly rating: FieldRef<"VideoReview", 'Int'>
-    readonly likes: FieldRef<"VideoReview", 'Int'>
-    readonly dislikes: FieldRef<"VideoReview", 'Int'>
-    readonly createdAt: FieldRef<"VideoReview", 'DateTime'>
-    readonly updatedAt: FieldRef<"VideoReview", 'DateTime'>
-    readonly userId: FieldRef<"VideoReview", 'String'>
+  interface ReviewFieldRefs {
+    readonly id: FieldRef<"Review", 'String'>
+    readonly title: FieldRef<"Review", 'String'>
+    readonly videoUrl: FieldRef<"Review", 'String'>
+    readonly imageUrl: FieldRef<"Review", 'String'>
+    readonly thumbnailUrl: FieldRef<"Review", 'String'>
+    readonly category: FieldRef<"Review", 'String'>
+    readonly description: FieldRef<"Review", 'String'>
+    readonly rating: FieldRef<"Review", 'Int'>
+    readonly views: FieldRef<"Review", 'Int'>
+    readonly createdAt: FieldRef<"Review", 'DateTime'>
+    readonly updatedAt: FieldRef<"Review", 'DateTime'>
+    readonly userId: FieldRef<"Review", 'String'>
+    readonly agreements: FieldRef<"Review", 'Int'>
   }
     
 
   // Custom InputTypes
   /**
-   * VideoReview findUnique
+   * Review findUnique
    */
-  export type VideoReviewFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VideoReview
+     * Select specific fields to fetch from the Review
      */
-    select?: VideoReviewSelect<ExtArgs> | null
+    select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VideoReview
+     * Omit specific fields from the Review
      */
-    omit?: VideoReviewOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VideoReviewInclude<ExtArgs> | null
+    include?: ReviewInclude<ExtArgs> | null
     /**
-     * Filter, which VideoReview to fetch.
+     * Filter, which Review to fetch.
      */
-    where: VideoReviewWhereUniqueInput
+    where: ReviewWhereUniqueInput
   }
 
   /**
-   * VideoReview findUniqueOrThrow
+   * Review findUniqueOrThrow
    */
-  export type VideoReviewFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VideoReview
+     * Select specific fields to fetch from the Review
      */
-    select?: VideoReviewSelect<ExtArgs> | null
+    select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VideoReview
+     * Omit specific fields from the Review
      */
-    omit?: VideoReviewOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VideoReviewInclude<ExtArgs> | null
+    include?: ReviewInclude<ExtArgs> | null
     /**
-     * Filter, which VideoReview to fetch.
+     * Filter, which Review to fetch.
      */
-    where: VideoReviewWhereUniqueInput
+    where: ReviewWhereUniqueInput
   }
 
   /**
-   * VideoReview findFirst
+   * Review findFirst
    */
-  export type VideoReviewFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VideoReview
+     * Select specific fields to fetch from the Review
      */
-    select?: VideoReviewSelect<ExtArgs> | null
+    select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VideoReview
+     * Omit specific fields from the Review
      */
-    omit?: VideoReviewOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VideoReviewInclude<ExtArgs> | null
+    include?: ReviewInclude<ExtArgs> | null
     /**
-     * Filter, which VideoReview to fetch.
+     * Filter, which Review to fetch.
      */
-    where?: VideoReviewWhereInput
+    where?: ReviewWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of VideoReviews to fetch.
+     * Determine the order of Reviews to fetch.
      */
-    orderBy?: VideoReviewOrderByWithRelationInput | VideoReviewOrderByWithRelationInput[]
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for VideoReviews.
+     * Sets the position for searching for Reviews.
      */
-    cursor?: VideoReviewWhereUniqueInput
+    cursor?: ReviewWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` VideoReviews from the position of the cursor.
+     * Take `±n` Reviews from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` VideoReviews.
+     * Skip the first `n` Reviews.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of VideoReviews.
+     * Filter by unique combinations of Reviews.
      */
-    distinct?: VideoReviewScalarFieldEnum | VideoReviewScalarFieldEnum[]
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
   }
 
   /**
-   * VideoReview findFirstOrThrow
+   * Review findFirstOrThrow
    */
-  export type VideoReviewFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VideoReview
+     * Select specific fields to fetch from the Review
      */
-    select?: VideoReviewSelect<ExtArgs> | null
+    select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VideoReview
+     * Omit specific fields from the Review
      */
-    omit?: VideoReviewOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VideoReviewInclude<ExtArgs> | null
+    include?: ReviewInclude<ExtArgs> | null
     /**
-     * Filter, which VideoReview to fetch.
+     * Filter, which Review to fetch.
      */
-    where?: VideoReviewWhereInput
+    where?: ReviewWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of VideoReviews to fetch.
+     * Determine the order of Reviews to fetch.
      */
-    orderBy?: VideoReviewOrderByWithRelationInput | VideoReviewOrderByWithRelationInput[]
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for VideoReviews.
+     * Sets the position for searching for Reviews.
      */
-    cursor?: VideoReviewWhereUniqueInput
+    cursor?: ReviewWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` VideoReviews from the position of the cursor.
+     * Take `±n` Reviews from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` VideoReviews.
+     * Skip the first `n` Reviews.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of VideoReviews.
+     * Filter by unique combinations of Reviews.
      */
-    distinct?: VideoReviewScalarFieldEnum | VideoReviewScalarFieldEnum[]
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
   }
 
   /**
-   * VideoReview findMany
+   * Review findMany
    */
-  export type VideoReviewFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VideoReview
+     * Select specific fields to fetch from the Review
      */
-    select?: VideoReviewSelect<ExtArgs> | null
+    select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VideoReview
+     * Omit specific fields from the Review
      */
-    omit?: VideoReviewOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VideoReviewInclude<ExtArgs> | null
+    include?: ReviewInclude<ExtArgs> | null
     /**
-     * Filter, which VideoReviews to fetch.
+     * Filter, which Reviews to fetch.
      */
-    where?: VideoReviewWhereInput
+    where?: ReviewWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of VideoReviews to fetch.
+     * Determine the order of Reviews to fetch.
      */
-    orderBy?: VideoReviewOrderByWithRelationInput | VideoReviewOrderByWithRelationInput[]
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing VideoReviews.
+     * Sets the position for listing Reviews.
      */
-    cursor?: VideoReviewWhereUniqueInput
+    cursor?: ReviewWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` VideoReviews from the position of the cursor.
+     * Take `±n` Reviews from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` VideoReviews.
+     * Skip the first `n` Reviews.
      */
     skip?: number
-    distinct?: VideoReviewScalarFieldEnum | VideoReviewScalarFieldEnum[]
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
   }
 
   /**
-   * VideoReview create
+   * Review create
    */
-  export type VideoReviewCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VideoReview
+     * Select specific fields to fetch from the Review
      */
-    select?: VideoReviewSelect<ExtArgs> | null
+    select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VideoReview
+     * Omit specific fields from the Review
      */
-    omit?: VideoReviewOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VideoReviewInclude<ExtArgs> | null
+    include?: ReviewInclude<ExtArgs> | null
     /**
-     * The data needed to create a VideoReview.
+     * The data needed to create a Review.
      */
-    data: XOR<VideoReviewCreateInput, VideoReviewUncheckedCreateInput>
+    data: XOR<ReviewCreateInput, ReviewUncheckedCreateInput>
   }
 
   /**
-   * VideoReview createMany
+   * Review createMany
    */
-  export type VideoReviewCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many VideoReviews.
+     * The data used to create many Reviews.
      */
-    data: VideoReviewCreateManyInput | VideoReviewCreateManyInput[]
+    data: ReviewCreateManyInput | ReviewCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * VideoReview createManyAndReturn
+   * Review createManyAndReturn
    */
-  export type VideoReviewCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VideoReview
+     * Select specific fields to fetch from the Review
      */
-    select?: VideoReviewSelectCreateManyAndReturn<ExtArgs> | null
+    select?: ReviewSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the VideoReview
+     * Omit specific fields from the Review
      */
-    omit?: VideoReviewOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
-     * The data used to create many VideoReviews.
+     * The data used to create many Reviews.
      */
-    data: VideoReviewCreateManyInput | VideoReviewCreateManyInput[]
+    data: ReviewCreateManyInput | ReviewCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VideoReviewIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: ReviewIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * VideoReview update
+   * Review update
    */
-  export type VideoReviewUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VideoReview
+     * Select specific fields to fetch from the Review
      */
-    select?: VideoReviewSelect<ExtArgs> | null
+    select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VideoReview
+     * Omit specific fields from the Review
      */
-    omit?: VideoReviewOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VideoReviewInclude<ExtArgs> | null
+    include?: ReviewInclude<ExtArgs> | null
     /**
-     * The data needed to update a VideoReview.
+     * The data needed to update a Review.
      */
-    data: XOR<VideoReviewUpdateInput, VideoReviewUncheckedUpdateInput>
+    data: XOR<ReviewUpdateInput, ReviewUncheckedUpdateInput>
     /**
-     * Choose, which VideoReview to update.
+     * Choose, which Review to update.
      */
-    where: VideoReviewWhereUniqueInput
+    where: ReviewWhereUniqueInput
   }
 
   /**
-   * VideoReview updateMany
+   * Review updateMany
    */
-  export type VideoReviewUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update VideoReviews.
+     * The data used to update Reviews.
      */
-    data: XOR<VideoReviewUpdateManyMutationInput, VideoReviewUncheckedUpdateManyInput>
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyInput>
     /**
-     * Filter which VideoReviews to update
+     * Filter which Reviews to update
      */
-    where?: VideoReviewWhereInput
+    where?: ReviewWhereInput
     /**
-     * Limit how many VideoReviews to update.
+     * Limit how many Reviews to update.
      */
     limit?: number
   }
 
   /**
-   * VideoReview updateManyAndReturn
+   * Review updateManyAndReturn
    */
-  export type VideoReviewUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VideoReview
+     * Select specific fields to fetch from the Review
      */
-    select?: VideoReviewSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: ReviewSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the VideoReview
+     * Omit specific fields from the Review
      */
-    omit?: VideoReviewOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
-     * The data used to update VideoReviews.
+     * The data used to update Reviews.
      */
-    data: XOR<VideoReviewUpdateManyMutationInput, VideoReviewUncheckedUpdateManyInput>
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyInput>
     /**
-     * Filter which VideoReviews to update
+     * Filter which Reviews to update
      */
-    where?: VideoReviewWhereInput
+    where?: ReviewWhereInput
     /**
-     * Limit how many VideoReviews to update.
+     * Limit how many Reviews to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VideoReviewIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: ReviewIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * VideoReview upsert
+   * Review upsert
    */
-  export type VideoReviewUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VideoReview
+     * Select specific fields to fetch from the Review
      */
-    select?: VideoReviewSelect<ExtArgs> | null
+    select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VideoReview
+     * Omit specific fields from the Review
      */
-    omit?: VideoReviewOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VideoReviewInclude<ExtArgs> | null
+    include?: ReviewInclude<ExtArgs> | null
     /**
-     * The filter to search for the VideoReview to update in case it exists.
+     * The filter to search for the Review to update in case it exists.
      */
-    where: VideoReviewWhereUniqueInput
+    where: ReviewWhereUniqueInput
     /**
-     * In case the VideoReview found by the `where` argument doesn't exist, create a new VideoReview with this data.
+     * In case the Review found by the `where` argument doesn't exist, create a new Review with this data.
      */
-    create: XOR<VideoReviewCreateInput, VideoReviewUncheckedCreateInput>
+    create: XOR<ReviewCreateInput, ReviewUncheckedCreateInput>
     /**
-     * In case the VideoReview was found with the provided `where` argument, update it with this data.
+     * In case the Review was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<VideoReviewUpdateInput, VideoReviewUncheckedUpdateInput>
+    update: XOR<ReviewUpdateInput, ReviewUncheckedUpdateInput>
   }
 
   /**
-   * VideoReview delete
+   * Review delete
    */
-  export type VideoReviewDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VideoReview
+     * Select specific fields to fetch from the Review
      */
-    select?: VideoReviewSelect<ExtArgs> | null
+    select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VideoReview
+     * Omit specific fields from the Review
      */
-    omit?: VideoReviewOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VideoReviewInclude<ExtArgs> | null
+    include?: ReviewInclude<ExtArgs> | null
     /**
-     * Filter which VideoReview to delete.
+     * Filter which Review to delete.
      */
-    where: VideoReviewWhereUniqueInput
+    where: ReviewWhereUniqueInput
   }
 
   /**
-   * VideoReview deleteMany
+   * Review deleteMany
    */
-  export type VideoReviewDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which VideoReviews to delete
+     * Filter which Reviews to delete
      */
-    where?: VideoReviewWhereInput
+    where?: ReviewWhereInput
     /**
-     * Limit how many VideoReviews to delete.
+     * Limit how many Reviews to delete.
      */
     limit?: number
   }
 
   /**
-   * VideoReview without action
+   * Review without action
    */
-  export type VideoReviewDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ReviewDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VideoReview
+     * Select specific fields to fetch from the Review
      */
-    select?: VideoReviewSelect<ExtArgs> | null
+    select?: ReviewSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VideoReview
+     * Omit specific fields from the Review
      */
-    omit?: VideoReviewOmit<ExtArgs> | null
+    omit?: ReviewOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VideoReviewInclude<ExtArgs> | null
+    include?: ReviewInclude<ExtArgs> | null
   }
 
 
@@ -10792,21 +10818,23 @@ export namespace Prisma {
   export type WeeklyStarScalarFieldEnum = (typeof WeeklyStarScalarFieldEnum)[keyof typeof WeeklyStarScalarFieldEnum]
 
 
-  export const VideoReviewScalarFieldEnum: {
+  export const ReviewScalarFieldEnum: {
     id: 'id',
     title: 'title',
-    youtubeUrl: 'youtubeUrl',
+    videoUrl: 'videoUrl',
+    imageUrl: 'imageUrl',
+    thumbnailUrl: 'thumbnailUrl',
     category: 'category',
     description: 'description',
     rating: 'rating',
-    likes: 'likes',
-    dislikes: 'dislikes',
+    views: 'views',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    userId: 'userId'
+    userId: 'userId',
+    agreements: 'agreements'
   };
 
-  export type VideoReviewScalarFieldEnum = (typeof VideoReviewScalarFieldEnum)[keyof typeof VideoReviewScalarFieldEnum]
+  export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -11108,7 +11136,7 @@ export namespace Prisma {
     sessions?: SessionListRelationFilter
     questions?: QuestionListRelationFilter
     replies?: ReplyListRelationFilter
-    videoReviews?: VideoReviewListRelationFilter
+    videoReviews?: ReviewListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -11126,7 +11154,7 @@ export namespace Prisma {
     sessions?: SessionOrderByRelationAggregateInput
     questions?: QuestionOrderByRelationAggregateInput
     replies?: ReplyOrderByRelationAggregateInput
-    videoReviews?: VideoReviewOrderByRelationAggregateInput
+    videoReviews?: ReviewOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -11147,7 +11175,7 @@ export namespace Prisma {
     sessions?: SessionListRelationFilter
     questions?: QuestionListRelationFilter
     replies?: ReplyListRelationFilter
-    videoReviews?: VideoReviewListRelationFilter
+    videoReviews?: ReviewListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -11408,91 +11436,101 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"WeeklyStar"> | Date | string
   }
 
-  export type VideoReviewWhereInput = {
-    AND?: VideoReviewWhereInput | VideoReviewWhereInput[]
-    OR?: VideoReviewWhereInput[]
-    NOT?: VideoReviewWhereInput | VideoReviewWhereInput[]
-    id?: StringFilter<"VideoReview"> | string
-    title?: StringFilter<"VideoReview"> | string
-    youtubeUrl?: StringFilter<"VideoReview"> | string
-    category?: StringFilter<"VideoReview"> | string
-    description?: StringFilter<"VideoReview"> | string
-    rating?: IntFilter<"VideoReview"> | number
-    likes?: IntFilter<"VideoReview"> | number
-    dislikes?: IntFilter<"VideoReview"> | number
-    createdAt?: DateTimeFilter<"VideoReview"> | Date | string
-    updatedAt?: DateTimeFilter<"VideoReview"> | Date | string
-    userId?: StringFilter<"VideoReview"> | string
+  export type ReviewWhereInput = {
+    AND?: ReviewWhereInput | ReviewWhereInput[]
+    OR?: ReviewWhereInput[]
+    NOT?: ReviewWhereInput | ReviewWhereInput[]
+    id?: StringFilter<"Review"> | string
+    title?: StringFilter<"Review"> | string
+    videoUrl?: StringNullableFilter<"Review"> | string | null
+    imageUrl?: StringNullableFilter<"Review"> | string | null
+    thumbnailUrl?: StringNullableFilter<"Review"> | string | null
+    category?: StringFilter<"Review"> | string
+    description?: StringFilter<"Review"> | string
+    rating?: IntFilter<"Review"> | number
+    views?: IntFilter<"Review"> | number
+    createdAt?: DateTimeFilter<"Review"> | Date | string
+    updatedAt?: DateTimeFilter<"Review"> | Date | string
+    userId?: StringFilter<"Review"> | string
+    agreements?: IntFilter<"Review"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
-  export type VideoReviewOrderByWithRelationInput = {
+  export type ReviewOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
-    youtubeUrl?: SortOrder
+    videoUrl?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    thumbnailUrl?: SortOrderInput | SortOrder
     category?: SortOrder
     description?: SortOrder
     rating?: SortOrder
-    likes?: SortOrder
-    dislikes?: SortOrder
+    views?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
+    agreements?: SortOrder
     user?: UserOrderByWithRelationInput
   }
 
-  export type VideoReviewWhereUniqueInput = Prisma.AtLeast<{
+  export type ReviewWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: VideoReviewWhereInput | VideoReviewWhereInput[]
-    OR?: VideoReviewWhereInput[]
-    NOT?: VideoReviewWhereInput | VideoReviewWhereInput[]
-    title?: StringFilter<"VideoReview"> | string
-    youtubeUrl?: StringFilter<"VideoReview"> | string
-    category?: StringFilter<"VideoReview"> | string
-    description?: StringFilter<"VideoReview"> | string
-    rating?: IntFilter<"VideoReview"> | number
-    likes?: IntFilter<"VideoReview"> | number
-    dislikes?: IntFilter<"VideoReview"> | number
-    createdAt?: DateTimeFilter<"VideoReview"> | Date | string
-    updatedAt?: DateTimeFilter<"VideoReview"> | Date | string
-    userId?: StringFilter<"VideoReview"> | string
+    AND?: ReviewWhereInput | ReviewWhereInput[]
+    OR?: ReviewWhereInput[]
+    NOT?: ReviewWhereInput | ReviewWhereInput[]
+    title?: StringFilter<"Review"> | string
+    videoUrl?: StringNullableFilter<"Review"> | string | null
+    imageUrl?: StringNullableFilter<"Review"> | string | null
+    thumbnailUrl?: StringNullableFilter<"Review"> | string | null
+    category?: StringFilter<"Review"> | string
+    description?: StringFilter<"Review"> | string
+    rating?: IntFilter<"Review"> | number
+    views?: IntFilter<"Review"> | number
+    createdAt?: DateTimeFilter<"Review"> | Date | string
+    updatedAt?: DateTimeFilter<"Review"> | Date | string
+    userId?: StringFilter<"Review"> | string
+    agreements?: IntFilter<"Review"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
-  export type VideoReviewOrderByWithAggregationInput = {
+  export type ReviewOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
-    youtubeUrl?: SortOrder
+    videoUrl?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    thumbnailUrl?: SortOrderInput | SortOrder
     category?: SortOrder
     description?: SortOrder
     rating?: SortOrder
-    likes?: SortOrder
-    dislikes?: SortOrder
+    views?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
-    _count?: VideoReviewCountOrderByAggregateInput
-    _avg?: VideoReviewAvgOrderByAggregateInput
-    _max?: VideoReviewMaxOrderByAggregateInput
-    _min?: VideoReviewMinOrderByAggregateInput
-    _sum?: VideoReviewSumOrderByAggregateInput
+    agreements?: SortOrder
+    _count?: ReviewCountOrderByAggregateInput
+    _avg?: ReviewAvgOrderByAggregateInput
+    _max?: ReviewMaxOrderByAggregateInput
+    _min?: ReviewMinOrderByAggregateInput
+    _sum?: ReviewSumOrderByAggregateInput
   }
 
-  export type VideoReviewScalarWhereWithAggregatesInput = {
-    AND?: VideoReviewScalarWhereWithAggregatesInput | VideoReviewScalarWhereWithAggregatesInput[]
-    OR?: VideoReviewScalarWhereWithAggregatesInput[]
-    NOT?: VideoReviewScalarWhereWithAggregatesInput | VideoReviewScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"VideoReview"> | string
-    title?: StringWithAggregatesFilter<"VideoReview"> | string
-    youtubeUrl?: StringWithAggregatesFilter<"VideoReview"> | string
-    category?: StringWithAggregatesFilter<"VideoReview"> | string
-    description?: StringWithAggregatesFilter<"VideoReview"> | string
-    rating?: IntWithAggregatesFilter<"VideoReview"> | number
-    likes?: IntWithAggregatesFilter<"VideoReview"> | number
-    dislikes?: IntWithAggregatesFilter<"VideoReview"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"VideoReview"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"VideoReview"> | Date | string
-    userId?: StringWithAggregatesFilter<"VideoReview"> | string
+  export type ReviewScalarWhereWithAggregatesInput = {
+    AND?: ReviewScalarWhereWithAggregatesInput | ReviewScalarWhereWithAggregatesInput[]
+    OR?: ReviewScalarWhereWithAggregatesInput[]
+    NOT?: ReviewScalarWhereWithAggregatesInput | ReviewScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Review"> | string
+    title?: StringWithAggregatesFilter<"Review"> | string
+    videoUrl?: StringNullableWithAggregatesFilter<"Review"> | string | null
+    imageUrl?: StringNullableWithAggregatesFilter<"Review"> | string | null
+    thumbnailUrl?: StringNullableWithAggregatesFilter<"Review"> | string | null
+    category?: StringWithAggregatesFilter<"Review"> | string
+    description?: StringWithAggregatesFilter<"Review"> | string
+    rating?: IntWithAggregatesFilter<"Review"> | number
+    views?: IntWithAggregatesFilter<"Review"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
+    userId?: StringWithAggregatesFilter<"Review"> | string
+    agreements?: IntWithAggregatesFilter<"Review"> | number
   }
 
   export type AccountCreateInput = {
@@ -11704,7 +11742,7 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     questions?: QuestionCreateNestedManyWithoutUserInput
     replies?: ReplyCreateNestedManyWithoutUserInput
-    videoReviews?: VideoReviewCreateNestedManyWithoutUserInput
+    videoReviews?: ReviewCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -11722,7 +11760,7 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     questions?: QuestionUncheckedCreateNestedManyWithoutUserInput
     replies?: ReplyUncheckedCreateNestedManyWithoutUserInput
-    videoReviews?: VideoReviewUncheckedCreateNestedManyWithoutUserInput
+    videoReviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -11740,7 +11778,7 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     questions?: QuestionUpdateManyWithoutUserNestedInput
     replies?: ReplyUpdateManyWithoutUserNestedInput
-    videoReviews?: VideoReviewUpdateManyWithoutUserNestedInput
+    videoReviews?: ReviewUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -11758,7 +11796,7 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     questions?: QuestionUncheckedUpdateManyWithoutUserNestedInput
     replies?: ReplyUncheckedUpdateManyWithoutUserNestedInput
-    videoReviews?: VideoReviewUncheckedUpdateManyWithoutUserNestedInput
+    videoReviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -12035,101 +12073,115 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type VideoReviewCreateInput = {
+  export type ReviewCreateInput = {
     id?: string
     title: string
-    youtubeUrl: string
+    videoUrl?: string | null
+    imageUrl?: string | null
+    thumbnailUrl?: string | null
     category: string
     description: string
     rating: number
-    likes?: number
-    dislikes?: number
+    views?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    agreements?: number
     user: UserCreateNestedOneWithoutVideoReviewsInput
   }
 
-  export type VideoReviewUncheckedCreateInput = {
+  export type ReviewUncheckedCreateInput = {
     id?: string
     title: string
-    youtubeUrl: string
+    videoUrl?: string | null
+    imageUrl?: string | null
+    thumbnailUrl?: string | null
     category: string
     description: string
     rating: number
-    likes?: number
-    dislikes?: number
+    views?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
+    agreements?: number
   }
 
-  export type VideoReviewUpdateInput = {
+  export type ReviewUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    youtubeUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     category?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
-    likes?: IntFieldUpdateOperationsInput | number
-    dislikes?: IntFieldUpdateOperationsInput | number
+    views?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    agreements?: IntFieldUpdateOperationsInput | number
     user?: UserUpdateOneRequiredWithoutVideoReviewsNestedInput
   }
 
-  export type VideoReviewUncheckedUpdateInput = {
+  export type ReviewUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    youtubeUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     category?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
-    likes?: IntFieldUpdateOperationsInput | number
-    dislikes?: IntFieldUpdateOperationsInput | number
+    views?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
+    agreements?: IntFieldUpdateOperationsInput | number
   }
 
-  export type VideoReviewCreateManyInput = {
+  export type ReviewCreateManyInput = {
     id?: string
     title: string
-    youtubeUrl: string
+    videoUrl?: string | null
+    imageUrl?: string | null
+    thumbnailUrl?: string | null
     category: string
     description: string
     rating: number
-    likes?: number
-    dislikes?: number
+    views?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
+    agreements?: number
   }
 
-  export type VideoReviewUpdateManyMutationInput = {
+  export type ReviewUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    youtubeUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     category?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
-    likes?: IntFieldUpdateOperationsInput | number
-    dislikes?: IntFieldUpdateOperationsInput | number
+    views?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    agreements?: IntFieldUpdateOperationsInput | number
   }
 
-  export type VideoReviewUncheckedUpdateManyInput = {
+  export type ReviewUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    youtubeUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     category?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
-    likes?: IntFieldUpdateOperationsInput | number
-    dislikes?: IntFieldUpdateOperationsInput | number
+    views?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
+    agreements?: IntFieldUpdateOperationsInput | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -12410,10 +12462,10 @@ export namespace Prisma {
     none?: ReplyWhereInput
   }
 
-  export type VideoReviewListRelationFilter = {
-    every?: VideoReviewWhereInput
-    some?: VideoReviewWhereInput
-    none?: VideoReviewWhereInput
+  export type ReviewListRelationFilter = {
+    every?: ReviewWhereInput
+    some?: ReviewWhereInput
+    none?: ReviewWhereInput
   }
 
   export type AccountOrderByRelationAggregateInput = {
@@ -12432,7 +12484,7 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type VideoReviewOrderByRelationAggregateInput = {
+  export type ReviewOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -12664,58 +12716,64 @@ export namespace Prisma {
     year?: SortOrder
   }
 
-  export type VideoReviewCountOrderByAggregateInput = {
+  export type ReviewCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    youtubeUrl?: SortOrder
+    videoUrl?: SortOrder
+    imageUrl?: SortOrder
+    thumbnailUrl?: SortOrder
     category?: SortOrder
     description?: SortOrder
     rating?: SortOrder
-    likes?: SortOrder
-    dislikes?: SortOrder
+    views?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
+    agreements?: SortOrder
   }
 
-  export type VideoReviewAvgOrderByAggregateInput = {
+  export type ReviewAvgOrderByAggregateInput = {
     rating?: SortOrder
-    likes?: SortOrder
-    dislikes?: SortOrder
+    views?: SortOrder
+    agreements?: SortOrder
   }
 
-  export type VideoReviewMaxOrderByAggregateInput = {
+  export type ReviewMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    youtubeUrl?: SortOrder
+    videoUrl?: SortOrder
+    imageUrl?: SortOrder
+    thumbnailUrl?: SortOrder
     category?: SortOrder
     description?: SortOrder
     rating?: SortOrder
-    likes?: SortOrder
-    dislikes?: SortOrder
+    views?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
+    agreements?: SortOrder
   }
 
-  export type VideoReviewMinOrderByAggregateInput = {
+  export type ReviewMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    youtubeUrl?: SortOrder
+    videoUrl?: SortOrder
+    imageUrl?: SortOrder
+    thumbnailUrl?: SortOrder
     category?: SortOrder
     description?: SortOrder
     rating?: SortOrder
-    likes?: SortOrder
-    dislikes?: SortOrder
+    views?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
+    agreements?: SortOrder
   }
 
-  export type VideoReviewSumOrderByAggregateInput = {
+  export type ReviewSumOrderByAggregateInput = {
     rating?: SortOrder
-    likes?: SortOrder
-    dislikes?: SortOrder
+    views?: SortOrder
+    agreements?: SortOrder
   }
 
   export type UserCreateNestedOneWithoutAccountsInput = {
@@ -12798,11 +12856,11 @@ export namespace Prisma {
     connect?: ReplyWhereUniqueInput | ReplyWhereUniqueInput[]
   }
 
-  export type VideoReviewCreateNestedManyWithoutUserInput = {
-    create?: XOR<VideoReviewCreateWithoutUserInput, VideoReviewUncheckedCreateWithoutUserInput> | VideoReviewCreateWithoutUserInput[] | VideoReviewUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: VideoReviewCreateOrConnectWithoutUserInput | VideoReviewCreateOrConnectWithoutUserInput[]
-    createMany?: VideoReviewCreateManyUserInputEnvelope
-    connect?: VideoReviewWhereUniqueInput | VideoReviewWhereUniqueInput[]
+  export type ReviewCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
   }
 
   export type AccountUncheckedCreateNestedManyWithoutUserInput = {
@@ -12833,11 +12891,11 @@ export namespace Prisma {
     connect?: ReplyWhereUniqueInput | ReplyWhereUniqueInput[]
   }
 
-  export type VideoReviewUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<VideoReviewCreateWithoutUserInput, VideoReviewUncheckedCreateWithoutUserInput> | VideoReviewCreateWithoutUserInput[] | VideoReviewUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: VideoReviewCreateOrConnectWithoutUserInput | VideoReviewCreateOrConnectWithoutUserInput[]
-    createMany?: VideoReviewCreateManyUserInputEnvelope
-    connect?: VideoReviewWhereUniqueInput | VideoReviewWhereUniqueInput[]
+  export type ReviewUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
@@ -12909,18 +12967,18 @@ export namespace Prisma {
     deleteMany?: ReplyScalarWhereInput | ReplyScalarWhereInput[]
   }
 
-  export type VideoReviewUpdateManyWithoutUserNestedInput = {
-    create?: XOR<VideoReviewCreateWithoutUserInput, VideoReviewUncheckedCreateWithoutUserInput> | VideoReviewCreateWithoutUserInput[] | VideoReviewUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: VideoReviewCreateOrConnectWithoutUserInput | VideoReviewCreateOrConnectWithoutUserInput[]
-    upsert?: VideoReviewUpsertWithWhereUniqueWithoutUserInput | VideoReviewUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: VideoReviewCreateManyUserInputEnvelope
-    set?: VideoReviewWhereUniqueInput | VideoReviewWhereUniqueInput[]
-    disconnect?: VideoReviewWhereUniqueInput | VideoReviewWhereUniqueInput[]
-    delete?: VideoReviewWhereUniqueInput | VideoReviewWhereUniqueInput[]
-    connect?: VideoReviewWhereUniqueInput | VideoReviewWhereUniqueInput[]
-    update?: VideoReviewUpdateWithWhereUniqueWithoutUserInput | VideoReviewUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: VideoReviewUpdateManyWithWhereWithoutUserInput | VideoReviewUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: VideoReviewScalarWhereInput | VideoReviewScalarWhereInput[]
+  export type ReviewUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutUserInput | ReviewUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutUserInput | ReviewUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutUserInput | ReviewUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
   }
 
   export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
@@ -12979,18 +13037,18 @@ export namespace Prisma {
     deleteMany?: ReplyScalarWhereInput | ReplyScalarWhereInput[]
   }
 
-  export type VideoReviewUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<VideoReviewCreateWithoutUserInput, VideoReviewUncheckedCreateWithoutUserInput> | VideoReviewCreateWithoutUserInput[] | VideoReviewUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: VideoReviewCreateOrConnectWithoutUserInput | VideoReviewCreateOrConnectWithoutUserInput[]
-    upsert?: VideoReviewUpsertWithWhereUniqueWithoutUserInput | VideoReviewUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: VideoReviewCreateManyUserInputEnvelope
-    set?: VideoReviewWhereUniqueInput | VideoReviewWhereUniqueInput[]
-    disconnect?: VideoReviewWhereUniqueInput | VideoReviewWhereUniqueInput[]
-    delete?: VideoReviewWhereUniqueInput | VideoReviewWhereUniqueInput[]
-    connect?: VideoReviewWhereUniqueInput | VideoReviewWhereUniqueInput[]
-    update?: VideoReviewUpdateWithWhereUniqueWithoutUserInput | VideoReviewUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: VideoReviewUpdateManyWithWhereWithoutUserInput | VideoReviewUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: VideoReviewScalarWhereInput | VideoReviewScalarWhereInput[]
+  export type ReviewUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutUserInput | ReviewUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutUserInput | ReviewUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutUserInput | ReviewUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
   }
 
   export type QuestionCreatecategoriesInput = {
@@ -13369,7 +13427,7 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     questions?: QuestionCreateNestedManyWithoutUserInput
     replies?: ReplyCreateNestedManyWithoutUserInput
-    videoReviews?: VideoReviewCreateNestedManyWithoutUserInput
+    videoReviews?: ReviewCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -13386,7 +13444,7 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     questions?: QuestionUncheckedCreateNestedManyWithoutUserInput
     replies?: ReplyUncheckedCreateNestedManyWithoutUserInput
-    videoReviews?: VideoReviewUncheckedCreateNestedManyWithoutUserInput
+    videoReviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -13419,7 +13477,7 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     questions?: QuestionUpdateManyWithoutUserNestedInput
     replies?: ReplyUpdateManyWithoutUserNestedInput
-    videoReviews?: VideoReviewUpdateManyWithoutUserNestedInput
+    videoReviews?: ReviewUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -13436,7 +13494,7 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     questions?: QuestionUncheckedUpdateManyWithoutUserNestedInput
     replies?: ReplyUncheckedUpdateManyWithoutUserNestedInput
-    videoReviews?: VideoReviewUncheckedUpdateManyWithoutUserNestedInput
+    videoReviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutSessionsInput = {
@@ -13453,7 +13511,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     questions?: QuestionCreateNestedManyWithoutUserInput
     replies?: ReplyCreateNestedManyWithoutUserInput
-    videoReviews?: VideoReviewCreateNestedManyWithoutUserInput
+    videoReviews?: ReviewCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -13470,7 +13528,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     questions?: QuestionUncheckedCreateNestedManyWithoutUserInput
     replies?: ReplyUncheckedCreateNestedManyWithoutUserInput
-    videoReviews?: VideoReviewUncheckedCreateNestedManyWithoutUserInput
+    videoReviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -13503,7 +13561,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     questions?: QuestionUpdateManyWithoutUserNestedInput
     replies?: ReplyUpdateManyWithoutUserNestedInput
-    videoReviews?: VideoReviewUpdateManyWithoutUserNestedInput
+    videoReviews?: ReviewUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -13520,7 +13578,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     questions?: QuestionUncheckedUpdateManyWithoutUserNestedInput
     replies?: ReplyUncheckedUpdateManyWithoutUserNestedInput
-    videoReviews?: VideoReviewUncheckedUpdateManyWithoutUserNestedInput
+    videoReviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type AccountCreateWithoutUserInput = {
@@ -13651,39 +13709,43 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type VideoReviewCreateWithoutUserInput = {
+  export type ReviewCreateWithoutUserInput = {
     id?: string
     title: string
-    youtubeUrl: string
+    videoUrl?: string | null
+    imageUrl?: string | null
+    thumbnailUrl?: string | null
     category: string
     description: string
     rating: number
-    likes?: number
-    dislikes?: number
+    views?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    agreements?: number
   }
 
-  export type VideoReviewUncheckedCreateWithoutUserInput = {
+  export type ReviewUncheckedCreateWithoutUserInput = {
     id?: string
     title: string
-    youtubeUrl: string
+    videoUrl?: string | null
+    imageUrl?: string | null
+    thumbnailUrl?: string | null
     category: string
     description: string
     rating: number
-    likes?: number
-    dislikes?: number
+    views?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    agreements?: number
   }
 
-  export type VideoReviewCreateOrConnectWithoutUserInput = {
-    where: VideoReviewWhereUniqueInput
-    create: XOR<VideoReviewCreateWithoutUserInput, VideoReviewUncheckedCreateWithoutUserInput>
+  export type ReviewCreateOrConnectWithoutUserInput = {
+    where: ReviewWhereUniqueInput
+    create: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput>
   }
 
-  export type VideoReviewCreateManyUserInputEnvelope = {
-    data: VideoReviewCreateManyUserInput | VideoReviewCreateManyUserInput[]
+  export type ReviewCreateManyUserInputEnvelope = {
+    data: ReviewCreateManyUserInput | ReviewCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -13809,37 +13871,39 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Reply"> | Date | string
   }
 
-  export type VideoReviewUpsertWithWhereUniqueWithoutUserInput = {
-    where: VideoReviewWhereUniqueInput
-    update: XOR<VideoReviewUpdateWithoutUserInput, VideoReviewUncheckedUpdateWithoutUserInput>
-    create: XOR<VideoReviewCreateWithoutUserInput, VideoReviewUncheckedCreateWithoutUserInput>
+  export type ReviewUpsertWithWhereUniqueWithoutUserInput = {
+    where: ReviewWhereUniqueInput
+    update: XOR<ReviewUpdateWithoutUserInput, ReviewUncheckedUpdateWithoutUserInput>
+    create: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput>
   }
 
-  export type VideoReviewUpdateWithWhereUniqueWithoutUserInput = {
-    where: VideoReviewWhereUniqueInput
-    data: XOR<VideoReviewUpdateWithoutUserInput, VideoReviewUncheckedUpdateWithoutUserInput>
+  export type ReviewUpdateWithWhereUniqueWithoutUserInput = {
+    where: ReviewWhereUniqueInput
+    data: XOR<ReviewUpdateWithoutUserInput, ReviewUncheckedUpdateWithoutUserInput>
   }
 
-  export type VideoReviewUpdateManyWithWhereWithoutUserInput = {
-    where: VideoReviewScalarWhereInput
-    data: XOR<VideoReviewUpdateManyMutationInput, VideoReviewUncheckedUpdateManyWithoutUserInput>
+  export type ReviewUpdateManyWithWhereWithoutUserInput = {
+    where: ReviewScalarWhereInput
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyWithoutUserInput>
   }
 
-  export type VideoReviewScalarWhereInput = {
-    AND?: VideoReviewScalarWhereInput | VideoReviewScalarWhereInput[]
-    OR?: VideoReviewScalarWhereInput[]
-    NOT?: VideoReviewScalarWhereInput | VideoReviewScalarWhereInput[]
-    id?: StringFilter<"VideoReview"> | string
-    title?: StringFilter<"VideoReview"> | string
-    youtubeUrl?: StringFilter<"VideoReview"> | string
-    category?: StringFilter<"VideoReview"> | string
-    description?: StringFilter<"VideoReview"> | string
-    rating?: IntFilter<"VideoReview"> | number
-    likes?: IntFilter<"VideoReview"> | number
-    dislikes?: IntFilter<"VideoReview"> | number
-    createdAt?: DateTimeFilter<"VideoReview"> | Date | string
-    updatedAt?: DateTimeFilter<"VideoReview"> | Date | string
-    userId?: StringFilter<"VideoReview"> | string
+  export type ReviewScalarWhereInput = {
+    AND?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+    OR?: ReviewScalarWhereInput[]
+    NOT?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+    id?: StringFilter<"Review"> | string
+    title?: StringFilter<"Review"> | string
+    videoUrl?: StringNullableFilter<"Review"> | string | null
+    imageUrl?: StringNullableFilter<"Review"> | string | null
+    thumbnailUrl?: StringNullableFilter<"Review"> | string | null
+    category?: StringFilter<"Review"> | string
+    description?: StringFilter<"Review"> | string
+    rating?: IntFilter<"Review"> | number
+    views?: IntFilter<"Review"> | number
+    createdAt?: DateTimeFilter<"Review"> | Date | string
+    updatedAt?: DateTimeFilter<"Review"> | Date | string
+    userId?: StringFilter<"Review"> | string
+    agreements?: IntFilter<"Review"> | number
   }
 
   export type UserCreateWithoutQuestionsInput = {
@@ -13856,7 +13920,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     replies?: ReplyCreateNestedManyWithoutUserInput
-    videoReviews?: VideoReviewCreateNestedManyWithoutUserInput
+    videoReviews?: ReviewCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutQuestionsInput = {
@@ -13873,7 +13937,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     replies?: ReplyUncheckedCreateNestedManyWithoutUserInput
-    videoReviews?: VideoReviewUncheckedCreateNestedManyWithoutUserInput
+    videoReviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutQuestionsInput = {
@@ -13957,7 +14021,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     replies?: ReplyUpdateManyWithoutUserNestedInput
-    videoReviews?: VideoReviewUpdateManyWithoutUserNestedInput
+    videoReviews?: ReviewUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutQuestionsInput = {
@@ -13974,7 +14038,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     replies?: ReplyUncheckedUpdateManyWithoutUserNestedInput
-    videoReviews?: VideoReviewUncheckedUpdateManyWithoutUserNestedInput
+    videoReviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ReplyUpsertWithWhereUniqueWithoutQuestionInput = {
@@ -14067,7 +14131,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     questions?: QuestionCreateNestedManyWithoutUserInput
-    videoReviews?: VideoReviewCreateNestedManyWithoutUserInput
+    videoReviews?: ReviewCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRepliesInput = {
@@ -14084,7 +14148,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     questions?: QuestionUncheckedCreateNestedManyWithoutUserInput
-    videoReviews?: VideoReviewUncheckedCreateNestedManyWithoutUserInput
+    videoReviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRepliesInput = {
@@ -14156,7 +14220,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     questions?: QuestionUpdateManyWithoutUserNestedInput
-    videoReviews?: VideoReviewUpdateManyWithoutUserNestedInput
+    videoReviews?: ReviewUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRepliesInput = {
@@ -14173,7 +14237,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     questions?: QuestionUncheckedUpdateManyWithoutUserNestedInput
-    videoReviews?: VideoReviewUncheckedUpdateManyWithoutUserNestedInput
+    videoReviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type QuestionCreateWithoutWeeklyStarInput = {
@@ -14374,17 +14438,19 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type VideoReviewCreateManyUserInput = {
+  export type ReviewCreateManyUserInput = {
     id?: string
     title: string
-    youtubeUrl: string
+    videoUrl?: string | null
+    imageUrl?: string | null
+    thumbnailUrl?: string | null
     category: string
     description: string
     rating: number
-    likes?: number
-    dislikes?: number
+    views?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    agreements?: number
   }
 
   export type AccountUpdateWithoutUserInput = {
@@ -14517,43 +14583,49 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type VideoReviewUpdateWithoutUserInput = {
+  export type ReviewUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    youtubeUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     category?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
-    likes?: IntFieldUpdateOperationsInput | number
-    dislikes?: IntFieldUpdateOperationsInput | number
+    views?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    agreements?: IntFieldUpdateOperationsInput | number
   }
 
-  export type VideoReviewUncheckedUpdateWithoutUserInput = {
+  export type ReviewUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    youtubeUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     category?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
-    likes?: IntFieldUpdateOperationsInput | number
-    dislikes?: IntFieldUpdateOperationsInput | number
+    views?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    agreements?: IntFieldUpdateOperationsInput | number
   }
 
-  export type VideoReviewUncheckedUpdateManyWithoutUserInput = {
+  export type ReviewUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    youtubeUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     category?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
-    likes?: IntFieldUpdateOperationsInput | number
-    dislikes?: IntFieldUpdateOperationsInput | number
+    views?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    agreements?: IntFieldUpdateOperationsInput | number
   }
 
   export type ReplyCreateManyQuestionInput = {

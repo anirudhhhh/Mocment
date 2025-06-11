@@ -60,7 +60,7 @@ model User {
   sessions      Session[]
   questions     Question[]
   replies       Reply[]
-  videoReviews  VideoReview[]
+  videoReviews  Review[]
 }
 
 model Question {
@@ -109,21 +109,19 @@ model WeeklyStar {
   @@unique([week, year])
 }
 
-model VideoReview {
+model Review {
   id          String   @id @default(cuid())
   title       String
-  videoUrl    String   // URL to the uploaded video
+  videoUrl    String?  // Optional URL to the uploaded video
+  imageUrl    String?  // Optional URL to the uploaded image
   thumbnailUrl String? // Optional thumbnail URL
   category    String
   description String
   rating      Int
-  likes       Int      @default(0)
-  dislikes    Int      @default(0)
   views       Int      @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   user        User     @relation(fields: [userId], references: [id])
   userId      String
-
-  @@index([likes]) // Add index for faster sorting by likes
+  agreements  Int      @default(0) 
 }

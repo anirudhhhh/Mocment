@@ -194,18 +194,20 @@ exports.Prisma.WeeklyStarScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.VideoReviewScalarFieldEnum = {
+exports.Prisma.ReviewScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  youtubeUrl: 'youtubeUrl',
+  videoUrl: 'videoUrl',
+  imageUrl: 'imageUrl',
+  thumbnailUrl: 'thumbnailUrl',
   category: 'category',
   description: 'description',
   rating: 'rating',
-  likes: 'likes',
-  dislikes: 'dislikes',
+  views: 'views',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  userId: 'userId'
+  userId: 'userId',
+  agreements: 'agreements'
 };
 
 exports.Prisma.SortOrder = {
@@ -232,7 +234,7 @@ exports.Prisma.ModelName = {
   Question: 'Question',
   Reply: 'Reply',
   WeeklyStar: 'WeeklyStar',
-  VideoReview: 'VideoReview'
+  Review: 'Review'
 };
 
 /**

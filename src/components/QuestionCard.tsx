@@ -9,6 +9,7 @@ interface QuestionCardProps {
   onDislike: (questionId: string) => void;
   onReply: (questionId: string) => void;
   onViewReplies: (questionId: string) => void;
+  userDisplayName?: string; // Optional prop for user display name
 }
 
 export const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -17,14 +18,16 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   onDislike,
   onReply,
   onViewReplies,
+  userDisplayName,
 }) => {
   return (
     <div className="bg-white rounded-lg shadow-md p-6 mb-4">
       <div className="flex items-start justify-between">
         <div className="flex-1">
           <div className="mb-2 text-sm text-gray-600">
-            From Click
+            From {userDisplayName || 'Anonymous'}
           </div>
+
           <p className="text-gray-800 text-lg mb-2">{question.content}</p>
           <div className="flex flex-wrap gap-2 mb-4">
             {question.categories?.map((category) => (

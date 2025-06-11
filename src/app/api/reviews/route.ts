@@ -5,7 +5,7 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
 
 export async function GET() {
   try {
-    const reviews = await prisma.videoReview.findMany({
+    const reviews = await prisma.review.findMany({
       orderBy: {
         createdAt: 'desc'
       },
@@ -34,18 +34,19 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { title, youtubeUrl, category, description, rating } = body;
+    const { title, videoUrl=null, imageUrl=null, category, description, rating } = body;
 
-    const review = await prisma.videoReview.create({
+    const review = await prisma.review.create({
       data: {
         title,
-        youtubeUrl,
+        videoUrl,
+        imageUrl,
         category,
         description,
         rating,
         userId: session.user.id,
-        likes: 0,
-        dislikes: 0
+        agreements: 0, 
+        views: 0
       }
     });
 

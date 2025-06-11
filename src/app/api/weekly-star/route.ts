@@ -30,9 +30,9 @@ export async function POST() {
       },
     });
 
-    // Find question with most thumbs-up
+    // Find question with most thumbs-up (using 'likes' property)
     const mostLiked = questions.reduce((max: typeof questions[0] | null, q: typeof questions[0]) => {
-      return q.thumbsUp.length > (max?.thumbsUp.length || 0) ? q : max;
+      return q.likes > (max?.likes || 0) ? q : max;
     }, null);
 
     if (!mostLiked) {

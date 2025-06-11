@@ -10,7 +10,7 @@ export const Navbar: React.FC = () => {
         <div className="flex justify-between h-16">
             <div className="flex items-center mr-auto">
             <Link href="/" className="text-2xl font-bold text-white-600">
-              CLICK
+              MOCMENT
             </Link>
             </div>
           
@@ -20,9 +20,6 @@ export const Navbar: React.FC = () => {
             </Link>
             <Link href="/reviews" className="text-white-700 hover:text-white-600">
               Reviews
-            </Link>
-            <Link href="/opinion" className="text-white-700 hover:text-white-600">
-              Opinion
             </Link>
             <Link href="/discussions" className="text-white-700 hover:text-white-600">
               Discussions
