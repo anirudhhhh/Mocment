@@ -2,6 +2,7 @@ generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
   binaryTargets = ["native", "windows"]
+  engineType      = "binary"
 }
 
 datasource db {
@@ -46,16 +47,17 @@ model VerificationToken {
 
 model User {
   id             String    @id @default(uuid())
-  name           String
+  username           String @unique
   email          String    @unique
   emailVerified  DateTime?
+  phone String? @unique
   country        String
+  password      String
   interests      String[]  @default([])
   image          String?
   isPremium      Boolean   @default(false)
   createdAt      DateTime  @default(now())
   hashedPassword String?
-
   accounts      Account[]
   sessions      Session[]
   questions     Question[]
@@ -76,7 +78,6 @@ model Question {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   replies   Reply[]
-  weeklyStar WeeklyStar?
 
   @@index([userId])
 }
@@ -97,17 +98,6 @@ model Reply {
   @@index([userId])
 }
 
-model WeeklyStar {
-  id         String   @id @default(cuid())
-  questionId String   @unique
-  question   Question @relation(fields: [questionId], references: [id])
-  week       Int
-  year       Int
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-
-  @@unique([week, year])
-}
 
 model Review {
   id          String   @id @default(cuid())
