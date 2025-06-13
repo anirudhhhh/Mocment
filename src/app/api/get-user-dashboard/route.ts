@@ -20,7 +20,7 @@ export async function GET() {
             include: {
               user: {
                 select: {
-                  name: true,
+                  username: true,
                   image: true,
                 },
               },
@@ -36,7 +36,7 @@ export async function GET() {
           question: true,
           user: {
             select: {
-              name: true,
+              username: true,
               image: true,
             },
           },
@@ -60,7 +60,7 @@ export async function GET() {
       userIdentity: {
         showName: question.showName,
         country: question.country || '',
-        name: question.showName ? user.name : null,
+        name: question.showName ? user.username : null,
       },
     })),
   };

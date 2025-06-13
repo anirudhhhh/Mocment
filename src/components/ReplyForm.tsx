@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 interface ReplyFormProps {
   questionId: string;
-  onSubmit: (content: string, contentType: 'text' | 'video', videoUrl?: string) => void;
+  onSubmit: (content: string, contentType: 'text' | 'video', videoUrl?: string, questionId?:string) => void;
   onCancel: () => void;
 }
 
@@ -19,7 +19,7 @@ export const ReplyForm: React.FC<ReplyFormProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(content, contentType, contentType === 'video' ? videoUrl : undefined);
+    onSubmit(content, contentType, contentType === 'video' ? videoUrl : undefined, questionId);
     setContent('');
     setVideoUrl('');
   };

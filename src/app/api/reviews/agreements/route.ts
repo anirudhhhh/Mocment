@@ -1,10 +1,10 @@
 import { prisma } from '@/lib/prisma';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(request: NextRequest) {
+export async function POST(request: NextRequest): Promise<NextResponse> {
   const { reviewId } = await request.json();
 
-  if (!reviewId) {
+  if (!reviewId || typeof reviewId !== 'string') {
     return NextResponse.json({ error: 'Review ID missing' }, { status: 400 });
   }
 

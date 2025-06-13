@@ -42,6 +42,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           <div className="flex items-center space-x-4">
             <button
               onClick={() => onLike(question.id)}
+                aria-label={`Like question: ${question.content}`}       
               className="flex items-center space-x-1 text-gray-600 hover:text-indigo-600"
             >
               <span>👍</span>
@@ -49,6 +50,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
             </button>
             <button
               onClick={() => onDislike(question.id)}
+              aria-label={`Like question titled ${question.content}`}
               className="flex items-center space-x-1 text-gray-600 hover:text-red-600"
             >
               <span>👎</span>

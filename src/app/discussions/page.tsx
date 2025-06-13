@@ -8,6 +8,7 @@ import { ReplyCard } from '../../components/ReplyCard';
 import { QuestionForm } from '../../components/QuestionForm';
 import { Question, Reply } from '../../lib/types';
 import { useSession } from 'next-auth/react';
+import Image from 'next/image';
 
 
 export default function Discussions() {
@@ -24,7 +25,6 @@ export default function Discussions() {
   const [showName, setShowName] = useState<boolean>(false);
   const [country, setCountry] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
-  const [starQuestion, setStarQuestion] = useState<Question | null>(null);
 
   useEffect(() => {
     async function fetchQuestions() {
@@ -290,7 +290,7 @@ return (
               <div className="relative">
                 {/* Main Image Container */}
                 <div className="relative bg-white p-6 rounded-3xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
-                  <img 
+                  <Image 
                     src="/anything.png" 
                     alt="Discussion Community" 
                     className="w-80 h-80 object-cover rounded-2xl"
@@ -333,7 +333,6 @@ return (
             <QuestionForm
               onSubmit={handlePostQuestion}
               onCancel={() => setIsPostingQuestion(false)}
-              isAuthorized={true}
             />
           )}
 

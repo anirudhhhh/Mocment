@@ -40,7 +40,7 @@ export const authOptions: AuthOptions = {
         return {
           id: user.id,
           email: user.email,
-          name: user.name,
+          username: user.username,
           image: user.image,
         };
       },
@@ -77,11 +77,12 @@ export const authOptions: AuthOptions = {
             const newUser = await prisma.user.create({
               data: {
                 email: user.email!,
-                name: user.name!,
+                username: user.name!,
                 image: user.image || null,
                 country: "Unknown",
                 interests: [],
                 hashedPassword: "",
+                password: "", // Added required password property
                 accounts: {
                   create: {
                     type: account.type,

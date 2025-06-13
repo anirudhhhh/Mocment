@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Navbar } from '../../components/Navbar';
 import ReviewCard from '@/components/ReviewCard';
+import {toast} from 'react-hot-toast';
 
 interface VideoReview {
   id: string;
@@ -164,7 +165,7 @@ const handleSubmitReview = async (e: React.FormEvent) => {
   e.preventDefault();
 
   if (!newReview.title.trim() || !newReview.category || !newReview.description.trim()) {
-    alert('Please fill in all required fields');
+    toast.error('Please fill in all required fields');
     return;
   }
 
@@ -223,10 +224,10 @@ const handleSubmitReview = async (e: React.FormEvent) => {
       rating: 5
     });
 
-    alert('Review posted successfully!');
+    toast.success('Review posted successfully!');
   } catch (error) {
     console.error('Error posting review:', error);
-    alert(`Failed to upload content: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    toast.error(`Failed to upload content: ${error instanceof Error ? error.message : 'Unknown error'}`);
   } finally {
     setIsUploading(false);
     setUploadProgress(0);
@@ -235,28 +236,28 @@ const handleSubmitReview = async (e: React.FormEvent) => {
 
 
   const filteredReviews = selectedCategory === 'all'
-    ? reviews
-    : reviews.filter(review => review.category === selectedCategory);
-
-  const topVideos = [...reviews]
-    .sort((a, b) => b.likes - a.likes)
-    .slice(0, 5);
+    ? [...reviews].sort((a, b) => ((b.likes ?? 0) - (b.dislikes ?? 0)) - ((a.likes ?? 0) - (a.dislikes ?? 0)))
+    : reviews
+        .filter(review => review.category === selectedCategory)
+        .sort((a, b) => ((b.likes ?? 0) - (b.dislikes ?? 0)) - ((a.likes ?? 0) - (a.dislikes ?? 0)));
 
   const startCamera = async (mode: 'photo' | 'video') => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: true,
-        audio: mode === 'video'
-      });
-      streamRef.current = stream;
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
+      if(typeof window !== 'undefined' || navigator.mediaDevices) {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+          audio: mode === 'video'
+        });
+        streamRef.current = stream;
+        if (videoRef.current) {
+          videoRef.current.srcObject = stream;
+        }
+        setShowCamera(true);
+        setCameraMode(mode);
       }
-      setShowCamera(true);
-      setCameraMode(mode);
     } catch (error) {
       console.error('Error accessing camera:', error);
-      alert('Unable to access camera. Please check your permissions.');
+      toast.error('Unable to access camera. Please check your permissions.');
     }
   };
 

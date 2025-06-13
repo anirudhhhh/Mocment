@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# Allow Prisma Client output
+!node_modules/.prisma/client
+!prisma/schema.prisma
+!prisma/migrations/
+!prisma/generated/

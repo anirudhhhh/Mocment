@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 interface ReviewCardProps {
   review: {
@@ -55,11 +56,10 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
           <button
             onClick={handleAgree}
             disabled={agreed}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition ${
-              agreed
+            className={`px-4 py-2 rounded-full text-sm font-medium transition ${agreed
                 ? 'bg-green-600 text-white cursor-not-allowed'
                 : 'bg-gray-100 text-gray-700 hover:bg-green-600 hover:text-white'
-            }`}
+              }`}
           >
             I Agree
           </button>
@@ -78,9 +78,11 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
             className="rounded-lg max-w-full h-auto"
           />
         ) : review.imageUrl ? (
-          <img
+          <Image
             src={review.imageUrl}
             alt={review.title}
+            width={600} // or an appropriate width
+            height={400} // or an appropriate height
             className="rounded-lg max-w-full h-auto"
           />
         ) : (

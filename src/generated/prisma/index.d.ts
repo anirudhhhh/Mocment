@@ -44,11 +44,6 @@ export type Question = $Result.DefaultSelection<Prisma.$QuestionPayload>
  */
 export type Reply = $Result.DefaultSelection<Prisma.$ReplyPayload>
 /**
- * Model WeeklyStar
- * 
- */
-export type WeeklyStar = $Result.DefaultSelection<Prisma.$WeeklyStarPayload>
-/**
  * Model Review
  * 
  */
@@ -238,16 +233,6 @@ export class PrismaClient<
     * ```
     */
   get reply(): Prisma.ReplyDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.weeklyStar`: Exposes CRUD operations for the **WeeklyStar** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more WeeklyStars
-    * const weeklyStars = await prisma.weeklyStar.findMany()
-    * ```
-    */
-  get weeklyStar(): Prisma.WeeklyStarDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.review`: Exposes CRUD operations for the **Review** model.
@@ -704,7 +689,6 @@ export namespace Prisma {
     User: 'User',
     Question: 'Question',
     Reply: 'Reply',
-    WeeklyStar: 'WeeklyStar',
     Review: 'Review'
   };
 
@@ -724,7 +708,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "account" | "session" | "verificationToken" | "user" | "question" | "reply" | "weeklyStar" | "review"
+      modelProps: "account" | "session" | "verificationToken" | "user" | "question" | "reply" | "review"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1172,80 +1156,6 @@ export namespace Prisma {
           }
         }
       }
-      WeeklyStar: {
-        payload: Prisma.$WeeklyStarPayload<ExtArgs>
-        fields: Prisma.WeeklyStarFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.WeeklyStarFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WeeklyStarPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.WeeklyStarFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WeeklyStarPayload>
-          }
-          findFirst: {
-            args: Prisma.WeeklyStarFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WeeklyStarPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.WeeklyStarFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WeeklyStarPayload>
-          }
-          findMany: {
-            args: Prisma.WeeklyStarFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WeeklyStarPayload>[]
-          }
-          create: {
-            args: Prisma.WeeklyStarCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WeeklyStarPayload>
-          }
-          createMany: {
-            args: Prisma.WeeklyStarCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.WeeklyStarCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WeeklyStarPayload>[]
-          }
-          delete: {
-            args: Prisma.WeeklyStarDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WeeklyStarPayload>
-          }
-          update: {
-            args: Prisma.WeeklyStarUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WeeklyStarPayload>
-          }
-          deleteMany: {
-            args: Prisma.WeeklyStarDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.WeeklyStarUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.WeeklyStarUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WeeklyStarPayload>[]
-          }
-          upsert: {
-            args: Prisma.WeeklyStarUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WeeklyStarPayload>
-          }
-          aggregate: {
-            args: Prisma.WeeklyStarAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateWeeklyStar>
-          }
-          groupBy: {
-            args: Prisma.WeeklyStarGroupByArgs<ExtArgs>
-            result: $Utils.Optional<WeeklyStarGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.WeeklyStarCountArgs<ExtArgs>
-            result: $Utils.Optional<WeeklyStarCountAggregateOutputType> | number
-          }
-        }
-      }
       Review: {
         payload: Prisma.$ReviewPayload<ExtArgs>
         fields: Prisma.ReviewFieldRefs
@@ -1410,7 +1320,6 @@ export namespace Prisma {
     user?: UserOmit
     question?: QuestionOmit
     reply?: ReplyOmit
-    weeklyStar?: WeeklyStarOmit
     review?: ReviewOmit
   }
 
@@ -4812,10 +4721,12 @@ export namespace Prisma {
 
   export type UserMinAggregateOutputType = {
     id: string | null
-    name: string | null
+    username: string | null
     email: string | null
     emailVerified: Date | null
+    phone: string | null
     country: string | null
+    password: string | null
     image: string | null
     isPremium: boolean | null
     createdAt: Date | null
@@ -4824,10 +4735,12 @@ export namespace Prisma {
 
   export type UserMaxAggregateOutputType = {
     id: string | null
-    name: string | null
+    username: string | null
     email: string | null
     emailVerified: Date | null
+    phone: string | null
     country: string | null
+    password: string | null
     image: string | null
     isPremium: boolean | null
     createdAt: Date | null
@@ -4836,10 +4749,12 @@ export namespace Prisma {
 
   export type UserCountAggregateOutputType = {
     id: number
-    name: number
+    username: number
     email: number
     emailVerified: number
+    phone: number
     country: number
+    password: number
     interests: number
     image: number
     isPremium: number
@@ -4851,10 +4766,12 @@ export namespace Prisma {
 
   export type UserMinAggregateInputType = {
     id?: true
-    name?: true
+    username?: true
     email?: true
     emailVerified?: true
+    phone?: true
     country?: true
+    password?: true
     image?: true
     isPremium?: true
     createdAt?: true
@@ -4863,10 +4780,12 @@ export namespace Prisma {
 
   export type UserMaxAggregateInputType = {
     id?: true
-    name?: true
+    username?: true
     email?: true
     emailVerified?: true
+    phone?: true
     country?: true
+    password?: true
     image?: true
     isPremium?: true
     createdAt?: true
@@ -4875,10 +4794,12 @@ export namespace Prisma {
 
   export type UserCountAggregateInputType = {
     id?: true
-    name?: true
+    username?: true
     email?: true
     emailVerified?: true
+    phone?: true
     country?: true
+    password?: true
     interests?: true
     image?: true
     isPremium?: true
@@ -4961,10 +4882,12 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: string
-    name: string
+    username: string
     email: string
     emailVerified: Date | null
+    phone: string | null
     country: string
+    password: string
     interests: string[]
     image: string | null
     isPremium: boolean
@@ -4991,10 +4914,12 @@ export namespace Prisma {
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
+    username?: boolean
     email?: boolean
     emailVerified?: boolean
+    phone?: boolean
     country?: boolean
+    password?: boolean
     interests?: boolean
     image?: boolean
     isPremium?: boolean
@@ -5010,10 +4935,12 @@ export namespace Prisma {
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
+    username?: boolean
     email?: boolean
     emailVerified?: boolean
+    phone?: boolean
     country?: boolean
+    password?: boolean
     interests?: boolean
     image?: boolean
     isPremium?: boolean
@@ -5023,10 +4950,12 @@ export namespace Prisma {
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
+    username?: boolean
     email?: boolean
     emailVerified?: boolean
+    phone?: boolean
     country?: boolean
+    password?: boolean
     interests?: boolean
     image?: boolean
     isPremium?: boolean
@@ -5036,10 +4965,12 @@ export namespace Prisma {
 
   export type UserSelectScalar = {
     id?: boolean
-    name?: boolean
+    username?: boolean
     email?: boolean
     emailVerified?: boolean
+    phone?: boolean
     country?: boolean
+    password?: boolean
     interests?: boolean
     image?: boolean
     isPremium?: boolean
@@ -5047,7 +4978,7 @@ export namespace Prisma {
     hashedPassword?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "country" | "interests" | "image" | "isPremium" | "createdAt" | "hashedPassword", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "email" | "emailVerified" | "phone" | "country" | "password" | "interests" | "image" | "isPremium" | "createdAt" | "hashedPassword", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
@@ -5070,10 +5001,12 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      name: string
+      username: string
       email: string
       emailVerified: Date | null
+      phone: string | null
       country: string
+      password: string
       interests: string[]
       image: string | null
       isPremium: boolean
@@ -5508,10 +5441,12 @@ export namespace Prisma {
    */
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'String'>
-    readonly name: FieldRef<"User", 'String'>
+    readonly username: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly emailVerified: FieldRef<"User", 'DateTime'>
+    readonly phone: FieldRef<"User", 'String'>
     readonly country: FieldRef<"User", 'String'>
+    readonly password: FieldRef<"User", 'String'>
     readonly interests: FieldRef<"User", 'String[]'>
     readonly image: FieldRef<"User", 'String'>
     readonly isPremium: FieldRef<"User", 'Boolean'>
@@ -6283,7 +6218,6 @@ export namespace Prisma {
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     replies?: boolean | Question$repliesArgs<ExtArgs>
-    weeklyStar?: boolean | Question$weeklyStarArgs<ExtArgs>
     _count?: boolean | QuestionCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["question"]>
 
@@ -6332,7 +6266,6 @@ export namespace Prisma {
   export type QuestionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     replies?: boolean | Question$repliesArgs<ExtArgs>
-    weeklyStar?: boolean | Question$weeklyStarArgs<ExtArgs>
     _count?: boolean | QuestionCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type QuestionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6347,7 +6280,6 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       replies: Prisma.$ReplyPayload<ExtArgs>[]
-      weeklyStar: Prisma.$WeeklyStarPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -6756,7 +6688,6 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     replies<T extends Question$repliesArgs<ExtArgs> = {}>(args?: Subset<T, Question$repliesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReplyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    weeklyStar<T extends Question$weeklyStarArgs<ExtArgs> = {}>(args?: Subset<T, Question$weeklyStarArgs<ExtArgs>>): Prisma__WeeklyStarClient<$Result.GetResult<Prisma.$WeeklyStarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7213,25 +7144,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ReplyScalarFieldEnum | ReplyScalarFieldEnum[]
-  }
-
-  /**
-   * Question.weeklyStar
-   */
-  export type Question$weeklyStarArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the WeeklyStar
-     */
-    select?: WeeklyStarSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the WeeklyStar
-     */
-    omit?: WeeklyStarOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WeeklyStarInclude<ExtArgs> | null
-    where?: WeeklyStarWhereInput
   }
 
   /**
@@ -8393,1115 +8305,6 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: ReplyInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model WeeklyStar
-   */
-
-  export type AggregateWeeklyStar = {
-    _count: WeeklyStarCountAggregateOutputType | null
-    _avg: WeeklyStarAvgAggregateOutputType | null
-    _sum: WeeklyStarSumAggregateOutputType | null
-    _min: WeeklyStarMinAggregateOutputType | null
-    _max: WeeklyStarMaxAggregateOutputType | null
-  }
-
-  export type WeeklyStarAvgAggregateOutputType = {
-    week: number | null
-    year: number | null
-  }
-
-  export type WeeklyStarSumAggregateOutputType = {
-    week: number | null
-    year: number | null
-  }
-
-  export type WeeklyStarMinAggregateOutputType = {
-    id: string | null
-    questionId: string | null
-    week: number | null
-    year: number | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type WeeklyStarMaxAggregateOutputType = {
-    id: string | null
-    questionId: string | null
-    week: number | null
-    year: number | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type WeeklyStarCountAggregateOutputType = {
-    id: number
-    questionId: number
-    week: number
-    year: number
-    createdAt: number
-    updatedAt: number
-    _all: number
-  }
-
-
-  export type WeeklyStarAvgAggregateInputType = {
-    week?: true
-    year?: true
-  }
-
-  export type WeeklyStarSumAggregateInputType = {
-    week?: true
-    year?: true
-  }
-
-  export type WeeklyStarMinAggregateInputType = {
-    id?: true
-    questionId?: true
-    week?: true
-    year?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type WeeklyStarMaxAggregateInputType = {
-    id?: true
-    questionId?: true
-    week?: true
-    year?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type WeeklyStarCountAggregateInputType = {
-    id?: true
-    questionId?: true
-    week?: true
-    year?: true
-    createdAt?: true
-    updatedAt?: true
-    _all?: true
-  }
-
-  export type WeeklyStarAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which WeeklyStar to aggregate.
-     */
-    where?: WeeklyStarWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of WeeklyStars to fetch.
-     */
-    orderBy?: WeeklyStarOrderByWithRelationInput | WeeklyStarOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: WeeklyStarWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` WeeklyStars from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` WeeklyStars.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned WeeklyStars
-    **/
-    _count?: true | WeeklyStarCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: WeeklyStarAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: WeeklyStarSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: WeeklyStarMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: WeeklyStarMaxAggregateInputType
-  }
-
-  export type GetWeeklyStarAggregateType<T extends WeeklyStarAggregateArgs> = {
-        [P in keyof T & keyof AggregateWeeklyStar]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateWeeklyStar[P]>
-      : GetScalarType<T[P], AggregateWeeklyStar[P]>
-  }
-
-
-
-
-  export type WeeklyStarGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: WeeklyStarWhereInput
-    orderBy?: WeeklyStarOrderByWithAggregationInput | WeeklyStarOrderByWithAggregationInput[]
-    by: WeeklyStarScalarFieldEnum[] | WeeklyStarScalarFieldEnum
-    having?: WeeklyStarScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: WeeklyStarCountAggregateInputType | true
-    _avg?: WeeklyStarAvgAggregateInputType
-    _sum?: WeeklyStarSumAggregateInputType
-    _min?: WeeklyStarMinAggregateInputType
-    _max?: WeeklyStarMaxAggregateInputType
-  }
-
-  export type WeeklyStarGroupByOutputType = {
-    id: string
-    questionId: string
-    week: number
-    year: number
-    createdAt: Date
-    updatedAt: Date
-    _count: WeeklyStarCountAggregateOutputType | null
-    _avg: WeeklyStarAvgAggregateOutputType | null
-    _sum: WeeklyStarSumAggregateOutputType | null
-    _min: WeeklyStarMinAggregateOutputType | null
-    _max: WeeklyStarMaxAggregateOutputType | null
-  }
-
-  type GetWeeklyStarGroupByPayload<T extends WeeklyStarGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<WeeklyStarGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof WeeklyStarGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], WeeklyStarGroupByOutputType[P]>
-            : GetScalarType<T[P], WeeklyStarGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type WeeklyStarSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    questionId?: boolean
-    week?: boolean
-    year?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    question?: boolean | QuestionDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["weeklyStar"]>
-
-  export type WeeklyStarSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    questionId?: boolean
-    week?: boolean
-    year?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    question?: boolean | QuestionDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["weeklyStar"]>
-
-  export type WeeklyStarSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    questionId?: boolean
-    week?: boolean
-    year?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    question?: boolean | QuestionDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["weeklyStar"]>
-
-  export type WeeklyStarSelectScalar = {
-    id?: boolean
-    questionId?: boolean
-    week?: boolean
-    year?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }
-
-  export type WeeklyStarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "questionId" | "week" | "year" | "createdAt" | "updatedAt", ExtArgs["result"]["weeklyStar"]>
-  export type WeeklyStarInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    question?: boolean | QuestionDefaultArgs<ExtArgs>
-  }
-  export type WeeklyStarIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    question?: boolean | QuestionDefaultArgs<ExtArgs>
-  }
-  export type WeeklyStarIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    question?: boolean | QuestionDefaultArgs<ExtArgs>
-  }
-
-  export type $WeeklyStarPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "WeeklyStar"
-    objects: {
-      question: Prisma.$QuestionPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      questionId: string
-      week: number
-      year: number
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["weeklyStar"]>
-    composites: {}
-  }
-
-  type WeeklyStarGetPayload<S extends boolean | null | undefined | WeeklyStarDefaultArgs> = $Result.GetResult<Prisma.$WeeklyStarPayload, S>
-
-  type WeeklyStarCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<WeeklyStarFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: WeeklyStarCountAggregateInputType | true
-    }
-
-  export interface WeeklyStarDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WeeklyStar'], meta: { name: 'WeeklyStar' } }
-    /**
-     * Find zero or one WeeklyStar that matches the filter.
-     * @param {WeeklyStarFindUniqueArgs} args - Arguments to find a WeeklyStar
-     * @example
-     * // Get one WeeklyStar
-     * const weeklyStar = await prisma.weeklyStar.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends WeeklyStarFindUniqueArgs>(args: SelectSubset<T, WeeklyStarFindUniqueArgs<ExtArgs>>): Prisma__WeeklyStarClient<$Result.GetResult<Prisma.$WeeklyStarPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one WeeklyStar that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {WeeklyStarFindUniqueOrThrowArgs} args - Arguments to find a WeeklyStar
-     * @example
-     * // Get one WeeklyStar
-     * const weeklyStar = await prisma.weeklyStar.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends WeeklyStarFindUniqueOrThrowArgs>(args: SelectSubset<T, WeeklyStarFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WeeklyStarClient<$Result.GetResult<Prisma.$WeeklyStarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first WeeklyStar that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {WeeklyStarFindFirstArgs} args - Arguments to find a WeeklyStar
-     * @example
-     * // Get one WeeklyStar
-     * const weeklyStar = await prisma.weeklyStar.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends WeeklyStarFindFirstArgs>(args?: SelectSubset<T, WeeklyStarFindFirstArgs<ExtArgs>>): Prisma__WeeklyStarClient<$Result.GetResult<Prisma.$WeeklyStarPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first WeeklyStar that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {WeeklyStarFindFirstOrThrowArgs} args - Arguments to find a WeeklyStar
-     * @example
-     * // Get one WeeklyStar
-     * const weeklyStar = await prisma.weeklyStar.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends WeeklyStarFindFirstOrThrowArgs>(args?: SelectSubset<T, WeeklyStarFindFirstOrThrowArgs<ExtArgs>>): Prisma__WeeklyStarClient<$Result.GetResult<Prisma.$WeeklyStarPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more WeeklyStars that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {WeeklyStarFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all WeeklyStars
-     * const weeklyStars = await prisma.weeklyStar.findMany()
-     * 
-     * // Get first 10 WeeklyStars
-     * const weeklyStars = await prisma.weeklyStar.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const weeklyStarWithIdOnly = await prisma.weeklyStar.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends WeeklyStarFindManyArgs>(args?: SelectSubset<T, WeeklyStarFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeeklyStarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a WeeklyStar.
-     * @param {WeeklyStarCreateArgs} args - Arguments to create a WeeklyStar.
-     * @example
-     * // Create one WeeklyStar
-     * const WeeklyStar = await prisma.weeklyStar.create({
-     *   data: {
-     *     // ... data to create a WeeklyStar
-     *   }
-     * })
-     * 
-     */
-    create<T extends WeeklyStarCreateArgs>(args: SelectSubset<T, WeeklyStarCreateArgs<ExtArgs>>): Prisma__WeeklyStarClient<$Result.GetResult<Prisma.$WeeklyStarPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many WeeklyStars.
-     * @param {WeeklyStarCreateManyArgs} args - Arguments to create many WeeklyStars.
-     * @example
-     * // Create many WeeklyStars
-     * const weeklyStar = await prisma.weeklyStar.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends WeeklyStarCreateManyArgs>(args?: SelectSubset<T, WeeklyStarCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many WeeklyStars and returns the data saved in the database.
-     * @param {WeeklyStarCreateManyAndReturnArgs} args - Arguments to create many WeeklyStars.
-     * @example
-     * // Create many WeeklyStars
-     * const weeklyStar = await prisma.weeklyStar.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many WeeklyStars and only return the `id`
-     * const weeklyStarWithIdOnly = await prisma.weeklyStar.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends WeeklyStarCreateManyAndReturnArgs>(args?: SelectSubset<T, WeeklyStarCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeeklyStarPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a WeeklyStar.
-     * @param {WeeklyStarDeleteArgs} args - Arguments to delete one WeeklyStar.
-     * @example
-     * // Delete one WeeklyStar
-     * const WeeklyStar = await prisma.weeklyStar.delete({
-     *   where: {
-     *     // ... filter to delete one WeeklyStar
-     *   }
-     * })
-     * 
-     */
-    delete<T extends WeeklyStarDeleteArgs>(args: SelectSubset<T, WeeklyStarDeleteArgs<ExtArgs>>): Prisma__WeeklyStarClient<$Result.GetResult<Prisma.$WeeklyStarPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one WeeklyStar.
-     * @param {WeeklyStarUpdateArgs} args - Arguments to update one WeeklyStar.
-     * @example
-     * // Update one WeeklyStar
-     * const weeklyStar = await prisma.weeklyStar.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends WeeklyStarUpdateArgs>(args: SelectSubset<T, WeeklyStarUpdateArgs<ExtArgs>>): Prisma__WeeklyStarClient<$Result.GetResult<Prisma.$WeeklyStarPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more WeeklyStars.
-     * @param {WeeklyStarDeleteManyArgs} args - Arguments to filter WeeklyStars to delete.
-     * @example
-     * // Delete a few WeeklyStars
-     * const { count } = await prisma.weeklyStar.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends WeeklyStarDeleteManyArgs>(args?: SelectSubset<T, WeeklyStarDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more WeeklyStars.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {WeeklyStarUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many WeeklyStars
-     * const weeklyStar = await prisma.weeklyStar.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends WeeklyStarUpdateManyArgs>(args: SelectSubset<T, WeeklyStarUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more WeeklyStars and returns the data updated in the database.
-     * @param {WeeklyStarUpdateManyAndReturnArgs} args - Arguments to update many WeeklyStars.
-     * @example
-     * // Update many WeeklyStars
-     * const weeklyStar = await prisma.weeklyStar.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more WeeklyStars and only return the `id`
-     * const weeklyStarWithIdOnly = await prisma.weeklyStar.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends WeeklyStarUpdateManyAndReturnArgs>(args: SelectSubset<T, WeeklyStarUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeeklyStarPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one WeeklyStar.
-     * @param {WeeklyStarUpsertArgs} args - Arguments to update or create a WeeklyStar.
-     * @example
-     * // Update or create a WeeklyStar
-     * const weeklyStar = await prisma.weeklyStar.upsert({
-     *   create: {
-     *     // ... data to create a WeeklyStar
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the WeeklyStar we want to update
-     *   }
-     * })
-     */
-    upsert<T extends WeeklyStarUpsertArgs>(args: SelectSubset<T, WeeklyStarUpsertArgs<ExtArgs>>): Prisma__WeeklyStarClient<$Result.GetResult<Prisma.$WeeklyStarPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of WeeklyStars.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {WeeklyStarCountArgs} args - Arguments to filter WeeklyStars to count.
-     * @example
-     * // Count the number of WeeklyStars
-     * const count = await prisma.weeklyStar.count({
-     *   where: {
-     *     // ... the filter for the WeeklyStars we want to count
-     *   }
-     * })
-    **/
-    count<T extends WeeklyStarCountArgs>(
-      args?: Subset<T, WeeklyStarCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], WeeklyStarCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a WeeklyStar.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {WeeklyStarAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends WeeklyStarAggregateArgs>(args: Subset<T, WeeklyStarAggregateArgs>): Prisma.PrismaPromise<GetWeeklyStarAggregateType<T>>
-
-    /**
-     * Group by WeeklyStar.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {WeeklyStarGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends WeeklyStarGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: WeeklyStarGroupByArgs['orderBy'] }
-        : { orderBy?: WeeklyStarGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, WeeklyStarGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWeeklyStarGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the WeeklyStar model
-   */
-  readonly fields: WeeklyStarFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for WeeklyStar.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__WeeklyStarClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    question<T extends QuestionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, QuestionDefaultArgs<ExtArgs>>): Prisma__QuestionClient<$Result.GetResult<Prisma.$QuestionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the WeeklyStar model
-   */
-  interface WeeklyStarFieldRefs {
-    readonly id: FieldRef<"WeeklyStar", 'String'>
-    readonly questionId: FieldRef<"WeeklyStar", 'String'>
-    readonly week: FieldRef<"WeeklyStar", 'Int'>
-    readonly year: FieldRef<"WeeklyStar", 'Int'>
-    readonly createdAt: FieldRef<"WeeklyStar", 'DateTime'>
-    readonly updatedAt: FieldRef<"WeeklyStar", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * WeeklyStar findUnique
-   */
-  export type WeeklyStarFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the WeeklyStar
-     */
-    select?: WeeklyStarSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the WeeklyStar
-     */
-    omit?: WeeklyStarOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WeeklyStarInclude<ExtArgs> | null
-    /**
-     * Filter, which WeeklyStar to fetch.
-     */
-    where: WeeklyStarWhereUniqueInput
-  }
-
-  /**
-   * WeeklyStar findUniqueOrThrow
-   */
-  export type WeeklyStarFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the WeeklyStar
-     */
-    select?: WeeklyStarSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the WeeklyStar
-     */
-    omit?: WeeklyStarOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WeeklyStarInclude<ExtArgs> | null
-    /**
-     * Filter, which WeeklyStar to fetch.
-     */
-    where: WeeklyStarWhereUniqueInput
-  }
-
-  /**
-   * WeeklyStar findFirst
-   */
-  export type WeeklyStarFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the WeeklyStar
-     */
-    select?: WeeklyStarSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the WeeklyStar
-     */
-    omit?: WeeklyStarOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WeeklyStarInclude<ExtArgs> | null
-    /**
-     * Filter, which WeeklyStar to fetch.
-     */
-    where?: WeeklyStarWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of WeeklyStars to fetch.
-     */
-    orderBy?: WeeklyStarOrderByWithRelationInput | WeeklyStarOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for WeeklyStars.
-     */
-    cursor?: WeeklyStarWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` WeeklyStars from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` WeeklyStars.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of WeeklyStars.
-     */
-    distinct?: WeeklyStarScalarFieldEnum | WeeklyStarScalarFieldEnum[]
-  }
-
-  /**
-   * WeeklyStar findFirstOrThrow
-   */
-  export type WeeklyStarFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the WeeklyStar
-     */
-    select?: WeeklyStarSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the WeeklyStar
-     */
-    omit?: WeeklyStarOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WeeklyStarInclude<ExtArgs> | null
-    /**
-     * Filter, which WeeklyStar to fetch.
-     */
-    where?: WeeklyStarWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of WeeklyStars to fetch.
-     */
-    orderBy?: WeeklyStarOrderByWithRelationInput | WeeklyStarOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for WeeklyStars.
-     */
-    cursor?: WeeklyStarWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` WeeklyStars from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` WeeklyStars.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of WeeklyStars.
-     */
-    distinct?: WeeklyStarScalarFieldEnum | WeeklyStarScalarFieldEnum[]
-  }
-
-  /**
-   * WeeklyStar findMany
-   */
-  export type WeeklyStarFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the WeeklyStar
-     */
-    select?: WeeklyStarSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the WeeklyStar
-     */
-    omit?: WeeklyStarOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WeeklyStarInclude<ExtArgs> | null
-    /**
-     * Filter, which WeeklyStars to fetch.
-     */
-    where?: WeeklyStarWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of WeeklyStars to fetch.
-     */
-    orderBy?: WeeklyStarOrderByWithRelationInput | WeeklyStarOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing WeeklyStars.
-     */
-    cursor?: WeeklyStarWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` WeeklyStars from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` WeeklyStars.
-     */
-    skip?: number
-    distinct?: WeeklyStarScalarFieldEnum | WeeklyStarScalarFieldEnum[]
-  }
-
-  /**
-   * WeeklyStar create
-   */
-  export type WeeklyStarCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the WeeklyStar
-     */
-    select?: WeeklyStarSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the WeeklyStar
-     */
-    omit?: WeeklyStarOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WeeklyStarInclude<ExtArgs> | null
-    /**
-     * The data needed to create a WeeklyStar.
-     */
-    data: XOR<WeeklyStarCreateInput, WeeklyStarUncheckedCreateInput>
-  }
-
-  /**
-   * WeeklyStar createMany
-   */
-  export type WeeklyStarCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many WeeklyStars.
-     */
-    data: WeeklyStarCreateManyInput | WeeklyStarCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * WeeklyStar createManyAndReturn
-   */
-  export type WeeklyStarCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the WeeklyStar
-     */
-    select?: WeeklyStarSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the WeeklyStar
-     */
-    omit?: WeeklyStarOmit<ExtArgs> | null
-    /**
-     * The data used to create many WeeklyStars.
-     */
-    data: WeeklyStarCreateManyInput | WeeklyStarCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WeeklyStarIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * WeeklyStar update
-   */
-  export type WeeklyStarUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the WeeklyStar
-     */
-    select?: WeeklyStarSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the WeeklyStar
-     */
-    omit?: WeeklyStarOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WeeklyStarInclude<ExtArgs> | null
-    /**
-     * The data needed to update a WeeklyStar.
-     */
-    data: XOR<WeeklyStarUpdateInput, WeeklyStarUncheckedUpdateInput>
-    /**
-     * Choose, which WeeklyStar to update.
-     */
-    where: WeeklyStarWhereUniqueInput
-  }
-
-  /**
-   * WeeklyStar updateMany
-   */
-  export type WeeklyStarUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update WeeklyStars.
-     */
-    data: XOR<WeeklyStarUpdateManyMutationInput, WeeklyStarUncheckedUpdateManyInput>
-    /**
-     * Filter which WeeklyStars to update
-     */
-    where?: WeeklyStarWhereInput
-    /**
-     * Limit how many WeeklyStars to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * WeeklyStar updateManyAndReturn
-   */
-  export type WeeklyStarUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the WeeklyStar
-     */
-    select?: WeeklyStarSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the WeeklyStar
-     */
-    omit?: WeeklyStarOmit<ExtArgs> | null
-    /**
-     * The data used to update WeeklyStars.
-     */
-    data: XOR<WeeklyStarUpdateManyMutationInput, WeeklyStarUncheckedUpdateManyInput>
-    /**
-     * Filter which WeeklyStars to update
-     */
-    where?: WeeklyStarWhereInput
-    /**
-     * Limit how many WeeklyStars to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WeeklyStarIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * WeeklyStar upsert
-   */
-  export type WeeklyStarUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the WeeklyStar
-     */
-    select?: WeeklyStarSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the WeeklyStar
-     */
-    omit?: WeeklyStarOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WeeklyStarInclude<ExtArgs> | null
-    /**
-     * The filter to search for the WeeklyStar to update in case it exists.
-     */
-    where: WeeklyStarWhereUniqueInput
-    /**
-     * In case the WeeklyStar found by the `where` argument doesn't exist, create a new WeeklyStar with this data.
-     */
-    create: XOR<WeeklyStarCreateInput, WeeklyStarUncheckedCreateInput>
-    /**
-     * In case the WeeklyStar was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<WeeklyStarUpdateInput, WeeklyStarUncheckedUpdateInput>
-  }
-
-  /**
-   * WeeklyStar delete
-   */
-  export type WeeklyStarDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the WeeklyStar
-     */
-    select?: WeeklyStarSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the WeeklyStar
-     */
-    omit?: WeeklyStarOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WeeklyStarInclude<ExtArgs> | null
-    /**
-     * Filter which WeeklyStar to delete.
-     */
-    where: WeeklyStarWhereUniqueInput
-  }
-
-  /**
-   * WeeklyStar deleteMany
-   */
-  export type WeeklyStarDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which WeeklyStars to delete
-     */
-    where?: WeeklyStarWhereInput
-    /**
-     * Limit how many WeeklyStars to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * WeeklyStar without action
-   */
-  export type WeeklyStarDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the WeeklyStar
-     */
-    select?: WeeklyStarSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the WeeklyStar
-     */
-    omit?: WeeklyStarOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WeeklyStarInclude<ExtArgs> | null
   }
 
 
@@ -10762,10 +9565,12 @@ export namespace Prisma {
 
   export const UserScalarFieldEnum: {
     id: 'id',
-    name: 'name',
+    username: 'username',
     email: 'email',
     emailVerified: 'emailVerified',
+    phone: 'phone',
     country: 'country',
+    password: 'password',
     interests: 'interests',
     image: 'image',
     isPremium: 'isPremium',
@@ -10804,18 +9609,6 @@ export namespace Prisma {
   };
 
   export type ReplyScalarFieldEnum = (typeof ReplyScalarFieldEnum)[keyof typeof ReplyScalarFieldEnum]
-
-
-  export const WeeklyStarScalarFieldEnum: {
-    id: 'id',
-    questionId: 'questionId',
-    week: 'week',
-    year: 'year',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type WeeklyStarScalarFieldEnum = (typeof WeeklyStarScalarFieldEnum)[keyof typeof WeeklyStarScalarFieldEnum]
 
 
   export const ReviewScalarFieldEnum: {
@@ -11123,10 +9916,12 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
-    name?: StringFilter<"User"> | string
+    username?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
+    phone?: StringNullableFilter<"User"> | string | null
     country?: StringFilter<"User"> | string
+    password?: StringFilter<"User"> | string
     interests?: StringNullableListFilter<"User">
     image?: StringNullableFilter<"User"> | string | null
     isPremium?: BoolFilter<"User"> | boolean
@@ -11141,10 +9936,12 @@ export namespace Prisma {
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    name?: SortOrder
+    username?: SortOrder
     email?: SortOrder
     emailVerified?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
     country?: SortOrder
+    password?: SortOrder
     interests?: SortOrder
     image?: SortOrderInput | SortOrder
     isPremium?: SortOrder
@@ -11159,13 +9956,15 @@ export namespace Prisma {
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    username?: string
     email?: string
+    phone?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    name?: StringFilter<"User"> | string
     emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
     country?: StringFilter<"User"> | string
+    password?: StringFilter<"User"> | string
     interests?: StringNullableListFilter<"User">
     image?: StringNullableFilter<"User"> | string | null
     isPremium?: BoolFilter<"User"> | boolean
@@ -11176,14 +9975,16 @@ export namespace Prisma {
     questions?: QuestionListRelationFilter
     replies?: ReplyListRelationFilter
     videoReviews?: ReviewListRelationFilter
-  }, "id" | "email">
+  }, "id" | "username" | "email" | "phone">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    name?: SortOrder
+    username?: SortOrder
     email?: SortOrder
     emailVerified?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
     country?: SortOrder
+    password?: SortOrder
     interests?: SortOrder
     image?: SortOrderInput | SortOrder
     isPremium?: SortOrder
@@ -11199,10 +10000,12 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
-    name?: StringWithAggregatesFilter<"User"> | string
+    username?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
     emailVerified?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    phone?: StringNullableWithAggregatesFilter<"User"> | string | null
     country?: StringWithAggregatesFilter<"User"> | string
+    password?: StringWithAggregatesFilter<"User"> | string
     interests?: StringNullableListFilter<"User">
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
     isPremium?: BoolWithAggregatesFilter<"User"> | boolean
@@ -11226,7 +10029,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Question"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     replies?: ReplyListRelationFilter
-    weeklyStar?: XOR<WeeklyStarNullableScalarRelationFilter, WeeklyStarWhereInput> | null
   }
 
   export type QuestionOrderByWithRelationInput = {
@@ -11242,7 +10044,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
     replies?: ReplyOrderByRelationAggregateInput
-    weeklyStar?: WeeklyStarOrderByWithRelationInput
   }
 
   export type QuestionWhereUniqueInput = Prisma.AtLeast<{
@@ -11261,7 +10062,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Question"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     replies?: ReplyListRelationFilter
-    weeklyStar?: XOR<WeeklyStarNullableScalarRelationFilter, WeeklyStarWhereInput> | null
   }, "id">
 
   export type QuestionOrderByWithAggregationInput = {
@@ -11371,69 +10171,6 @@ export namespace Prisma {
     dislikes?: IntWithAggregatesFilter<"Reply"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Reply"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Reply"> | Date | string
-  }
-
-  export type WeeklyStarWhereInput = {
-    AND?: WeeklyStarWhereInput | WeeklyStarWhereInput[]
-    OR?: WeeklyStarWhereInput[]
-    NOT?: WeeklyStarWhereInput | WeeklyStarWhereInput[]
-    id?: StringFilter<"WeeklyStar"> | string
-    questionId?: StringFilter<"WeeklyStar"> | string
-    week?: IntFilter<"WeeklyStar"> | number
-    year?: IntFilter<"WeeklyStar"> | number
-    createdAt?: DateTimeFilter<"WeeklyStar"> | Date | string
-    updatedAt?: DateTimeFilter<"WeeklyStar"> | Date | string
-    question?: XOR<QuestionScalarRelationFilter, QuestionWhereInput>
-  }
-
-  export type WeeklyStarOrderByWithRelationInput = {
-    id?: SortOrder
-    questionId?: SortOrder
-    week?: SortOrder
-    year?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    question?: QuestionOrderByWithRelationInput
-  }
-
-  export type WeeklyStarWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    questionId?: string
-    week_year?: WeeklyStarWeekYearCompoundUniqueInput
-    AND?: WeeklyStarWhereInput | WeeklyStarWhereInput[]
-    OR?: WeeklyStarWhereInput[]
-    NOT?: WeeklyStarWhereInput | WeeklyStarWhereInput[]
-    week?: IntFilter<"WeeklyStar"> | number
-    year?: IntFilter<"WeeklyStar"> | number
-    createdAt?: DateTimeFilter<"WeeklyStar"> | Date | string
-    updatedAt?: DateTimeFilter<"WeeklyStar"> | Date | string
-    question?: XOR<QuestionScalarRelationFilter, QuestionWhereInput>
-  }, "id" | "questionId" | "week_year">
-
-  export type WeeklyStarOrderByWithAggregationInput = {
-    id?: SortOrder
-    questionId?: SortOrder
-    week?: SortOrder
-    year?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: WeeklyStarCountOrderByAggregateInput
-    _avg?: WeeklyStarAvgOrderByAggregateInput
-    _max?: WeeklyStarMaxOrderByAggregateInput
-    _min?: WeeklyStarMinOrderByAggregateInput
-    _sum?: WeeklyStarSumOrderByAggregateInput
-  }
-
-  export type WeeklyStarScalarWhereWithAggregatesInput = {
-    AND?: WeeklyStarScalarWhereWithAggregatesInput | WeeklyStarScalarWhereWithAggregatesInput[]
-    OR?: WeeklyStarScalarWhereWithAggregatesInput[]
-    NOT?: WeeklyStarScalarWhereWithAggregatesInput | WeeklyStarScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"WeeklyStar"> | string
-    questionId?: StringWithAggregatesFilter<"WeeklyStar"> | string
-    week?: IntWithAggregatesFilter<"WeeklyStar"> | number
-    year?: IntWithAggregatesFilter<"WeeklyStar"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"WeeklyStar"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"WeeklyStar"> | Date | string
   }
 
   export type ReviewWhereInput = {
@@ -11729,10 +10466,12 @@ export namespace Prisma {
 
   export type UserCreateInput = {
     id?: string
-    name: string
+    username: string
     email: string
     emailVerified?: Date | string | null
+    phone?: string | null
     country: string
+    password: string
     interests?: UserCreateinterestsInput | string[]
     image?: string | null
     isPremium?: boolean
@@ -11747,10 +10486,12 @@ export namespace Prisma {
 
   export type UserUncheckedCreateInput = {
     id?: string
-    name: string
+    username: string
     email: string
     emailVerified?: Date | string | null
+    phone?: string | null
     country: string
+    password: string
     interests?: UserCreateinterestsInput | string[]
     image?: string | null
     isPremium?: boolean
@@ -11765,10 +10506,12 @@ export namespace Prisma {
 
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     country?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     interests?: UserUpdateinterestsInput | string[]
     image?: NullableStringFieldUpdateOperationsInput | string | null
     isPremium?: BoolFieldUpdateOperationsInput | boolean
@@ -11783,10 +10526,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     country?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     interests?: UserUpdateinterestsInput | string[]
     image?: NullableStringFieldUpdateOperationsInput | string | null
     isPremium?: BoolFieldUpdateOperationsInput | boolean
@@ -11801,10 +10546,12 @@ export namespace Prisma {
 
   export type UserCreateManyInput = {
     id?: string
-    name: string
+    username: string
     email: string
     emailVerified?: Date | string | null
+    phone?: string | null
     country: string
+    password: string
     interests?: UserCreateinterestsInput | string[]
     image?: string | null
     isPremium?: boolean
@@ -11814,10 +10561,12 @@ export namespace Prisma {
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     country?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     interests?: UserUpdateinterestsInput | string[]
     image?: NullableStringFieldUpdateOperationsInput | string | null
     isPremium?: BoolFieldUpdateOperationsInput | boolean
@@ -11827,10 +10576,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     country?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     interests?: UserUpdateinterestsInput | string[]
     image?: NullableStringFieldUpdateOperationsInput | string | null
     isPremium?: BoolFieldUpdateOperationsInput | boolean
@@ -11850,7 +10601,6 @@ export namespace Prisma {
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutQuestionsInput
     replies?: ReplyCreateNestedManyWithoutQuestionInput
-    weeklyStar?: WeeklyStarCreateNestedOneWithoutQuestionInput
   }
 
   export type QuestionUncheckedCreateInput = {
@@ -11865,7 +10615,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     replies?: ReplyUncheckedCreateNestedManyWithoutQuestionInput
-    weeklyStar?: WeeklyStarUncheckedCreateNestedOneWithoutQuestionInput
   }
 
   export type QuestionUpdateInput = {
@@ -11880,7 +10629,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutQuestionsNestedInput
     replies?: ReplyUpdateManyWithoutQuestionNestedInput
-    weeklyStar?: WeeklyStarUpdateOneWithoutQuestionNestedInput
   }
 
   export type QuestionUncheckedUpdateInput = {
@@ -11895,7 +10643,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     replies?: ReplyUncheckedUpdateManyWithoutQuestionNestedInput
-    weeklyStar?: WeeklyStarUncheckedUpdateOneWithoutQuestionNestedInput
   }
 
   export type QuestionCreateManyInput = {
@@ -12007,68 +10754,6 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     likes?: IntFieldUpdateOperationsInput | number
     dislikes?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type WeeklyStarCreateInput = {
-    id?: string
-    week: number
-    year: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    question: QuestionCreateNestedOneWithoutWeeklyStarInput
-  }
-
-  export type WeeklyStarUncheckedCreateInput = {
-    id?: string
-    questionId: string
-    week: number
-    year: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type WeeklyStarUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    week?: IntFieldUpdateOperationsInput | number
-    year?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    question?: QuestionUpdateOneRequiredWithoutWeeklyStarNestedInput
-  }
-
-  export type WeeklyStarUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    questionId?: StringFieldUpdateOperationsInput | string
-    week?: IntFieldUpdateOperationsInput | number
-    year?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type WeeklyStarCreateManyInput = {
-    id?: string
-    questionId: string
-    week: number
-    year: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type WeeklyStarUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    week?: IntFieldUpdateOperationsInput | number
-    year?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type WeeklyStarUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    questionId?: StringFieldUpdateOperationsInput | string
-    week?: IntFieldUpdateOperationsInput | number
-    year?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12490,10 +11175,12 @@ export namespace Prisma {
 
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
+    username?: SortOrder
     email?: SortOrder
     emailVerified?: SortOrder
+    phone?: SortOrder
     country?: SortOrder
+    password?: SortOrder
     interests?: SortOrder
     image?: SortOrder
     isPremium?: SortOrder
@@ -12503,10 +11190,12 @@ export namespace Prisma {
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
+    username?: SortOrder
     email?: SortOrder
     emailVerified?: SortOrder
+    phone?: SortOrder
     country?: SortOrder
+    password?: SortOrder
     image?: SortOrder
     isPremium?: SortOrder
     createdAt?: SortOrder
@@ -12515,10 +11204,12 @@ export namespace Prisma {
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
+    username?: SortOrder
     email?: SortOrder
     emailVerified?: SortOrder
+    phone?: SortOrder
     country?: SortOrder
+    password?: SortOrder
     image?: SortOrder
     isPremium?: SortOrder
     createdAt?: SortOrder
@@ -12556,11 +11247,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type WeeklyStarNullableScalarRelationFilter = {
-    is?: WeeklyStarWhereInput | null
-    isNot?: WeeklyStarWhereInput | null
   }
 
   export type QuestionCountOrderByAggregateInput = {
@@ -12672,48 +11358,6 @@ export namespace Prisma {
   export type ReplySumOrderByAggregateInput = {
     likes?: SortOrder
     dislikes?: SortOrder
-  }
-
-  export type WeeklyStarWeekYearCompoundUniqueInput = {
-    week: number
-    year: number
-  }
-
-  export type WeeklyStarCountOrderByAggregateInput = {
-    id?: SortOrder
-    questionId?: SortOrder
-    week?: SortOrder
-    year?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type WeeklyStarAvgOrderByAggregateInput = {
-    week?: SortOrder
-    year?: SortOrder
-  }
-
-  export type WeeklyStarMaxOrderByAggregateInput = {
-    id?: SortOrder
-    questionId?: SortOrder
-    week?: SortOrder
-    year?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type WeeklyStarMinOrderByAggregateInput = {
-    id?: SortOrder
-    questionId?: SortOrder
-    week?: SortOrder
-    year?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type WeeklyStarSumOrderByAggregateInput = {
-    week?: SortOrder
-    year?: SortOrder
   }
 
   export type ReviewCountOrderByAggregateInput = {
@@ -13068,23 +11712,11 @@ export namespace Prisma {
     connect?: ReplyWhereUniqueInput | ReplyWhereUniqueInput[]
   }
 
-  export type WeeklyStarCreateNestedOneWithoutQuestionInput = {
-    create?: XOR<WeeklyStarCreateWithoutQuestionInput, WeeklyStarUncheckedCreateWithoutQuestionInput>
-    connectOrCreate?: WeeklyStarCreateOrConnectWithoutQuestionInput
-    connect?: WeeklyStarWhereUniqueInput
-  }
-
   export type ReplyUncheckedCreateNestedManyWithoutQuestionInput = {
     create?: XOR<ReplyCreateWithoutQuestionInput, ReplyUncheckedCreateWithoutQuestionInput> | ReplyCreateWithoutQuestionInput[] | ReplyUncheckedCreateWithoutQuestionInput[]
     connectOrCreate?: ReplyCreateOrConnectWithoutQuestionInput | ReplyCreateOrConnectWithoutQuestionInput[]
     createMany?: ReplyCreateManyQuestionInputEnvelope
     connect?: ReplyWhereUniqueInput | ReplyWhereUniqueInput[]
-  }
-
-  export type WeeklyStarUncheckedCreateNestedOneWithoutQuestionInput = {
-    create?: XOR<WeeklyStarCreateWithoutQuestionInput, WeeklyStarUncheckedCreateWithoutQuestionInput>
-    connectOrCreate?: WeeklyStarCreateOrConnectWithoutQuestionInput
-    connect?: WeeklyStarWhereUniqueInput
   }
 
   export type QuestionUpdatecategoriesInput = {
@@ -13122,16 +11754,6 @@ export namespace Prisma {
     deleteMany?: ReplyScalarWhereInput | ReplyScalarWhereInput[]
   }
 
-  export type WeeklyStarUpdateOneWithoutQuestionNestedInput = {
-    create?: XOR<WeeklyStarCreateWithoutQuestionInput, WeeklyStarUncheckedCreateWithoutQuestionInput>
-    connectOrCreate?: WeeklyStarCreateOrConnectWithoutQuestionInput
-    upsert?: WeeklyStarUpsertWithoutQuestionInput
-    disconnect?: WeeklyStarWhereInput | boolean
-    delete?: WeeklyStarWhereInput | boolean
-    connect?: WeeklyStarWhereUniqueInput
-    update?: XOR<XOR<WeeklyStarUpdateToOneWithWhereWithoutQuestionInput, WeeklyStarUpdateWithoutQuestionInput>, WeeklyStarUncheckedUpdateWithoutQuestionInput>
-  }
-
   export type ReplyUncheckedUpdateManyWithoutQuestionNestedInput = {
     create?: XOR<ReplyCreateWithoutQuestionInput, ReplyUncheckedCreateWithoutQuestionInput> | ReplyCreateWithoutQuestionInput[] | ReplyUncheckedCreateWithoutQuestionInput[]
     connectOrCreate?: ReplyCreateOrConnectWithoutQuestionInput | ReplyCreateOrConnectWithoutQuestionInput[]
@@ -13144,16 +11766,6 @@ export namespace Prisma {
     update?: ReplyUpdateWithWhereUniqueWithoutQuestionInput | ReplyUpdateWithWhereUniqueWithoutQuestionInput[]
     updateMany?: ReplyUpdateManyWithWhereWithoutQuestionInput | ReplyUpdateManyWithWhereWithoutQuestionInput[]
     deleteMany?: ReplyScalarWhereInput | ReplyScalarWhereInput[]
-  }
-
-  export type WeeklyStarUncheckedUpdateOneWithoutQuestionNestedInput = {
-    create?: XOR<WeeklyStarCreateWithoutQuestionInput, WeeklyStarUncheckedCreateWithoutQuestionInput>
-    connectOrCreate?: WeeklyStarCreateOrConnectWithoutQuestionInput
-    upsert?: WeeklyStarUpsertWithoutQuestionInput
-    disconnect?: WeeklyStarWhereInput | boolean
-    delete?: WeeklyStarWhereInput | boolean
-    connect?: WeeklyStarWhereUniqueInput
-    update?: XOR<XOR<WeeklyStarUpdateToOneWithWhereWithoutQuestionInput, WeeklyStarUpdateWithoutQuestionInput>, WeeklyStarUncheckedUpdateWithoutQuestionInput>
   }
 
   export type QuestionCreateNestedOneWithoutRepliesInput = {
@@ -13182,20 +11794,6 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutRepliesInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRepliesInput, UserUpdateWithoutRepliesInput>, UserUncheckedUpdateWithoutRepliesInput>
-  }
-
-  export type QuestionCreateNestedOneWithoutWeeklyStarInput = {
-    create?: XOR<QuestionCreateWithoutWeeklyStarInput, QuestionUncheckedCreateWithoutWeeklyStarInput>
-    connectOrCreate?: QuestionCreateOrConnectWithoutWeeklyStarInput
-    connect?: QuestionWhereUniqueInput
-  }
-
-  export type QuestionUpdateOneRequiredWithoutWeeklyStarNestedInput = {
-    create?: XOR<QuestionCreateWithoutWeeklyStarInput, QuestionUncheckedCreateWithoutWeeklyStarInput>
-    connectOrCreate?: QuestionCreateOrConnectWithoutWeeklyStarInput
-    upsert?: QuestionUpsertWithoutWeeklyStarInput
-    connect?: QuestionWhereUniqueInput
-    update?: XOR<XOR<QuestionUpdateToOneWithWhereWithoutWeeklyStarInput, QuestionUpdateWithoutWeeklyStarInput>, QuestionUncheckedUpdateWithoutWeeklyStarInput>
   }
 
   export type UserCreateNestedOneWithoutVideoReviewsInput = {
@@ -13415,10 +12013,12 @@ export namespace Prisma {
 
   export type UserCreateWithoutAccountsInput = {
     id?: string
-    name: string
+    username: string
     email: string
     emailVerified?: Date | string | null
+    phone?: string | null
     country: string
+    password: string
     interests?: UserCreateinterestsInput | string[]
     image?: string | null
     isPremium?: boolean
@@ -13432,10 +12032,12 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutAccountsInput = {
     id?: string
-    name: string
+    username: string
     email: string
     emailVerified?: Date | string | null
+    phone?: string | null
     country: string
+    password: string
     interests?: UserCreateinterestsInput | string[]
     image?: string | null
     isPremium?: boolean
@@ -13465,10 +12067,12 @@ export namespace Prisma {
 
   export type UserUpdateWithoutAccountsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     country?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     interests?: UserUpdateinterestsInput | string[]
     image?: NullableStringFieldUpdateOperationsInput | string | null
     isPremium?: BoolFieldUpdateOperationsInput | boolean
@@ -13482,10 +12086,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     country?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     interests?: UserUpdateinterestsInput | string[]
     image?: NullableStringFieldUpdateOperationsInput | string | null
     isPremium?: BoolFieldUpdateOperationsInput | boolean
@@ -13499,10 +12105,12 @@ export namespace Prisma {
 
   export type UserCreateWithoutSessionsInput = {
     id?: string
-    name: string
+    username: string
     email: string
     emailVerified?: Date | string | null
+    phone?: string | null
     country: string
+    password: string
     interests?: UserCreateinterestsInput | string[]
     image?: string | null
     isPremium?: boolean
@@ -13516,10 +12124,12 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutSessionsInput = {
     id?: string
-    name: string
+    username: string
     email: string
     emailVerified?: Date | string | null
+    phone?: string | null
     country: string
+    password: string
     interests?: UserCreateinterestsInput | string[]
     image?: string | null
     isPremium?: boolean
@@ -13549,10 +12159,12 @@ export namespace Prisma {
 
   export type UserUpdateWithoutSessionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     country?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     interests?: UserUpdateinterestsInput | string[]
     image?: NullableStringFieldUpdateOperationsInput | string | null
     isPremium?: BoolFieldUpdateOperationsInput | boolean
@@ -13566,10 +12178,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     country?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     interests?: UserUpdateinterestsInput | string[]
     image?: NullableStringFieldUpdateOperationsInput | string | null
     isPremium?: BoolFieldUpdateOperationsInput | boolean
@@ -13652,7 +12266,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     replies?: ReplyCreateNestedManyWithoutQuestionInput
-    weeklyStar?: WeeklyStarCreateNestedOneWithoutQuestionInput
   }
 
   export type QuestionUncheckedCreateWithoutUserInput = {
@@ -13666,7 +12279,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     replies?: ReplyUncheckedCreateNestedManyWithoutQuestionInput
-    weeklyStar?: WeeklyStarUncheckedCreateNestedOneWithoutQuestionInput
   }
 
   export type QuestionCreateOrConnectWithoutUserInput = {
@@ -13908,10 +12520,12 @@ export namespace Prisma {
 
   export type UserCreateWithoutQuestionsInput = {
     id?: string
-    name: string
+    username: string
     email: string
     emailVerified?: Date | string | null
+    phone?: string | null
     country: string
+    password: string
     interests?: UserCreateinterestsInput | string[]
     image?: string | null
     isPremium?: boolean
@@ -13925,10 +12539,12 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutQuestionsInput = {
     id?: string
-    name: string
+    username: string
     email: string
     emailVerified?: Date | string | null
+    phone?: string | null
     country: string
+    password: string
     interests?: UserCreateinterestsInput | string[]
     image?: string | null
     isPremium?: boolean
@@ -13975,27 +12591,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type WeeklyStarCreateWithoutQuestionInput = {
-    id?: string
-    week: number
-    year: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type WeeklyStarUncheckedCreateWithoutQuestionInput = {
-    id?: string
-    week: number
-    year: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type WeeklyStarCreateOrConnectWithoutQuestionInput = {
-    where: WeeklyStarWhereUniqueInput
-    create: XOR<WeeklyStarCreateWithoutQuestionInput, WeeklyStarUncheckedCreateWithoutQuestionInput>
-  }
-
   export type UserUpsertWithoutQuestionsInput = {
     update: XOR<UserUpdateWithoutQuestionsInput, UserUncheckedUpdateWithoutQuestionsInput>
     create: XOR<UserCreateWithoutQuestionsInput, UserUncheckedCreateWithoutQuestionsInput>
@@ -14009,10 +12604,12 @@ export namespace Prisma {
 
   export type UserUpdateWithoutQuestionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     country?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     interests?: UserUpdateinterestsInput | string[]
     image?: NullableStringFieldUpdateOperationsInput | string | null
     isPremium?: BoolFieldUpdateOperationsInput | boolean
@@ -14026,10 +12623,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutQuestionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     country?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     interests?: UserUpdateinterestsInput | string[]
     image?: NullableStringFieldUpdateOperationsInput | string | null
     isPremium?: BoolFieldUpdateOperationsInput | boolean
@@ -14057,33 +12656,6 @@ export namespace Prisma {
     data: XOR<ReplyUpdateManyMutationInput, ReplyUncheckedUpdateManyWithoutQuestionInput>
   }
 
-  export type WeeklyStarUpsertWithoutQuestionInput = {
-    update: XOR<WeeklyStarUpdateWithoutQuestionInput, WeeklyStarUncheckedUpdateWithoutQuestionInput>
-    create: XOR<WeeklyStarCreateWithoutQuestionInput, WeeklyStarUncheckedCreateWithoutQuestionInput>
-    where?: WeeklyStarWhereInput
-  }
-
-  export type WeeklyStarUpdateToOneWithWhereWithoutQuestionInput = {
-    where?: WeeklyStarWhereInput
-    data: XOR<WeeklyStarUpdateWithoutQuestionInput, WeeklyStarUncheckedUpdateWithoutQuestionInput>
-  }
-
-  export type WeeklyStarUpdateWithoutQuestionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    week?: IntFieldUpdateOperationsInput | number
-    year?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type WeeklyStarUncheckedUpdateWithoutQuestionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    week?: IntFieldUpdateOperationsInput | number
-    year?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type QuestionCreateWithoutRepliesInput = {
     id?: string
     content: string
@@ -14095,7 +12667,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutQuestionsInput
-    weeklyStar?: WeeklyStarCreateNestedOneWithoutQuestionInput
   }
 
   export type QuestionUncheckedCreateWithoutRepliesInput = {
@@ -14109,7 +12680,6 @@ export namespace Prisma {
     country?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    weeklyStar?: WeeklyStarUncheckedCreateNestedOneWithoutQuestionInput
   }
 
   export type QuestionCreateOrConnectWithoutRepliesInput = {
@@ -14119,10 +12689,12 @@ export namespace Prisma {
 
   export type UserCreateWithoutRepliesInput = {
     id?: string
-    name: string
+    username: string
     email: string
     emailVerified?: Date | string | null
+    phone?: string | null
     country: string
+    password: string
     interests?: UserCreateinterestsInput | string[]
     image?: string | null
     isPremium?: boolean
@@ -14136,10 +12708,12 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutRepliesInput = {
     id?: string
-    name: string
+    username: string
     email: string
     emailVerified?: Date | string | null
+    phone?: string | null
     country: string
+    password: string
     interests?: UserCreateinterestsInput | string[]
     image?: string | null
     isPremium?: boolean
@@ -14178,7 +12752,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutQuestionsNestedInput
-    weeklyStar?: WeeklyStarUpdateOneWithoutQuestionNestedInput
   }
 
   export type QuestionUncheckedUpdateWithoutRepliesInput = {
@@ -14192,7 +12765,6 @@ export namespace Prisma {
     country?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    weeklyStar?: WeeklyStarUncheckedUpdateOneWithoutQuestionNestedInput
   }
 
   export type UserUpsertWithoutRepliesInput = {
@@ -14208,10 +12780,12 @@ export namespace Prisma {
 
   export type UserUpdateWithoutRepliesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     country?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     interests?: UserUpdateinterestsInput | string[]
     image?: NullableStringFieldUpdateOperationsInput | string | null
     isPremium?: BoolFieldUpdateOperationsInput | boolean
@@ -14225,10 +12799,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutRepliesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     country?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     interests?: UserUpdateinterestsInput | string[]
     image?: NullableStringFieldUpdateOperationsInput | string | null
     isPremium?: BoolFieldUpdateOperationsInput | boolean
@@ -14240,84 +12816,14 @@ export namespace Prisma {
     videoReviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type QuestionCreateWithoutWeeklyStarInput = {
-    id?: string
-    content: string
-    categories?: QuestionCreatecategoriesInput | string[]
-    likes?: number
-    dislikes?: number
-    showName?: boolean
-    country?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutQuestionsInput
-    replies?: ReplyCreateNestedManyWithoutQuestionInput
-  }
-
-  export type QuestionUncheckedCreateWithoutWeeklyStarInput = {
-    id?: string
-    content: string
-    categories?: QuestionCreatecategoriesInput | string[]
-    userId: string
-    likes?: number
-    dislikes?: number
-    showName?: boolean
-    country?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    replies?: ReplyUncheckedCreateNestedManyWithoutQuestionInput
-  }
-
-  export type QuestionCreateOrConnectWithoutWeeklyStarInput = {
-    where: QuestionWhereUniqueInput
-    create: XOR<QuestionCreateWithoutWeeklyStarInput, QuestionUncheckedCreateWithoutWeeklyStarInput>
-  }
-
-  export type QuestionUpsertWithoutWeeklyStarInput = {
-    update: XOR<QuestionUpdateWithoutWeeklyStarInput, QuestionUncheckedUpdateWithoutWeeklyStarInput>
-    create: XOR<QuestionCreateWithoutWeeklyStarInput, QuestionUncheckedCreateWithoutWeeklyStarInput>
-    where?: QuestionWhereInput
-  }
-
-  export type QuestionUpdateToOneWithWhereWithoutWeeklyStarInput = {
-    where?: QuestionWhereInput
-    data: XOR<QuestionUpdateWithoutWeeklyStarInput, QuestionUncheckedUpdateWithoutWeeklyStarInput>
-  }
-
-  export type QuestionUpdateWithoutWeeklyStarInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    categories?: QuestionUpdatecategoriesInput | string[]
-    likes?: IntFieldUpdateOperationsInput | number
-    dislikes?: IntFieldUpdateOperationsInput | number
-    showName?: BoolFieldUpdateOperationsInput | boolean
-    country?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutQuestionsNestedInput
-    replies?: ReplyUpdateManyWithoutQuestionNestedInput
-  }
-
-  export type QuestionUncheckedUpdateWithoutWeeklyStarInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    categories?: QuestionUpdatecategoriesInput | string[]
-    userId?: StringFieldUpdateOperationsInput | string
-    likes?: IntFieldUpdateOperationsInput | number
-    dislikes?: IntFieldUpdateOperationsInput | number
-    showName?: BoolFieldUpdateOperationsInput | boolean
-    country?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    replies?: ReplyUncheckedUpdateManyWithoutQuestionNestedInput
-  }
-
   export type UserCreateWithoutVideoReviewsInput = {
     id?: string
-    name: string
+    username: string
     email: string
     emailVerified?: Date | string | null
+    phone?: string | null
     country: string
+    password: string
     interests?: UserCreateinterestsInput | string[]
     image?: string | null
     isPremium?: boolean
@@ -14331,10 +12837,12 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutVideoReviewsInput = {
     id?: string
-    name: string
+    username: string
     email: string
     emailVerified?: Date | string | null
+    phone?: string | null
     country: string
+    password: string
     interests?: UserCreateinterestsInput | string[]
     image?: string | null
     isPremium?: boolean
@@ -14364,10 +12872,12 @@ export namespace Prisma {
 
   export type UserUpdateWithoutVideoReviewsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     country?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     interests?: UserUpdateinterestsInput | string[]
     image?: NullableStringFieldUpdateOperationsInput | string | null
     isPremium?: BoolFieldUpdateOperationsInput | boolean
@@ -14381,10 +12891,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutVideoReviewsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     country?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     interests?: UserUpdateinterestsInput | string[]
     image?: NullableStringFieldUpdateOperationsInput | string | null
     isPremium?: BoolFieldUpdateOperationsInput | boolean
@@ -14524,7 +13036,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     replies?: ReplyUpdateManyWithoutQuestionNestedInput
-    weeklyStar?: WeeklyStarUpdateOneWithoutQuestionNestedInput
   }
 
   export type QuestionUncheckedUpdateWithoutUserInput = {
@@ -14538,7 +13049,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     replies?: ReplyUncheckedUpdateManyWithoutQuestionNestedInput
-    weeklyStar?: WeeklyStarUncheckedUpdateOneWithoutQuestionNestedInput
   }
 
   export type QuestionUncheckedUpdateManyWithoutUserInput = {

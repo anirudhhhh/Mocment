@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Reply } from '../lib/types';
+import Image from 'next/image';
 
 interface ReplyCardProps {
   reply: Reply;
@@ -18,7 +19,7 @@ export const ReplyCard: React.FC<ReplyCardProps> = ({
     <div className="bg-gray-50 rounded-lg p-4 mb-3">
       <div className="flex items-start space-x-3">
         {reply.user?.image && (
-          <img
+          <Image
             src={reply.user.image}
             alt={reply.user.name}
             className="w-10 h-10 rounded-full"

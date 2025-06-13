@@ -29,7 +29,6 @@ model Question {
   id         String      @id @default(uuid())
   text       String
   category   String
-  weeklyStar WeeklyStar?
   thumbsUp   String[]    @default([])
   thumbsDown String[]    @default([])
   createdAt  DateTime    @default(now())
@@ -52,13 +51,4 @@ model Reply {
   user     User     @relation(fields: [userId], references: [id])
   question Question @relation(fields: [questionId], references: [id])
 }
-
-model WeeklyStar {
-  id         String   @id @default(uuid())
-  week       Int
-  year       Int
-  declaredAt DateTime @default(now())
-  questionId String   @unique
-
-  question Question @relation(fields: [questionId], references: [id])
-} 
+ 

@@ -2,7 +2,6 @@
 
 'use client'; // Optional if you use client-side hooks
 
-import React from 'react';
 
 const QuestionPage = () => {
   return (

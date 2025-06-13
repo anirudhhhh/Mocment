@@ -50,7 +50,7 @@ export default function Contact() {
               Contact Us
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Have questions or suggestions? We'd love to hear from you! Reach out to us through any of the channels below or use our suggestion form.
+              Have questions or suggestions? We&apos;d love to hear from you! Reach out to us through any of the channels below or use our suggestion form.
             </p>
           </header>
 
@@ -148,7 +148,7 @@ export default function Contact() {
                   {isSubmitting ? 'Submitting...' : 'Submit Suggestion'}
                 </button>
                 {submitStatus === 'success' && (
-                  <p className="text-green-600 text-center">Thank you for your suggestion! We'll review it soon.</p>
+                  <p className="text-green-600 text-center">Thank you for your suggestion! We&apos;ll review it soon.</p>
                 )}
                 {submitStatus === 'error' && (
                   <p className="text-red-600 text-center">Something went wrong. Please try again later.</p>
@@ -160,10 +160,10 @@ export default function Contact() {
           <div className="bg-white rounded-lg shadow-lg p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h2>
             <p className="text-gray-600 mb-4">
-              At Mocment, we're committed to creating a platform where people can connect, share experiences, and help each other make better decisions. Your feedback and suggestions are invaluable in helping us improve and grow.
+              At Mocment, we&apos;re committed to creating a platform where people can connect, share experiences, and help each other make better decisions. Your feedback and suggestions are invaluable in helping us improve and grow.
             </p>
             <p className="text-gray-600">
-              Whether you have a feature request, found a bug, or just want to share your thoughts, we're here to listen. Together, we can make Mocment even better for everyone.
+              Whether you have a feature request, found a bug, or just want to share your thoughts, we&apos;re here to listen. Together, we can make Mocment even better for everyone.
             </p>
           </div>
         </div>

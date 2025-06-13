@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { CATEGORIES } from '../lib/types';
+import { toast } from 'react-hot-toast';
 
 interface HomeQuestionFormProps {
   onSubmit: (content: string, categories: string[]) => void;
@@ -18,7 +19,7 @@ export const HomeQuestionForm: React.FC<HomeQuestionFormProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (selectedCategories.length === 0) {
-      alert('Please select at least one category');
+      toast.error('Please select at least one category');
       return;
     }
     onSubmit(content, selectedCategories);

@@ -150,10 +150,12 @@ exports.Prisma.VerificationTokenScalarFieldEnum = {
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
-  name: 'name',
+  username: 'username',
   email: 'email',
   emailVerified: 'emailVerified',
+  phone: 'phone',
   country: 'country',
+  password: 'password',
   interests: 'interests',
   image: 'image',
   isPremium: 'isPremium',
@@ -181,15 +183,6 @@ exports.Prisma.ReplyScalarFieldEnum = {
   userId: 'userId',
   likes: 'likes',
   dislikes: 'dislikes',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.WeeklyStarScalarFieldEnum = {
-  id: 'id',
-  questionId: 'questionId',
-  week: 'week',
-  year: 'year',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -233,7 +226,6 @@ exports.Prisma.ModelName = {
   User: 'User',
   Question: 'Question',
   Reply: 'Reply',
-  WeeklyStar: 'WeeklyStar',
   Review: 'Review'
 };
 

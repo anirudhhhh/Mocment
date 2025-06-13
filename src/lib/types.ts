@@ -25,6 +25,10 @@ export interface Question {
   createdAt: Date;
   updatedAt: Date;
   replies: Reply[];
+    user: {
+    username: string;
+    image: string | null;
+  };
   userIdentity?: {
     showName: boolean;
     country: string;

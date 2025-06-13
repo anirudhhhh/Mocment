@@ -3,14 +3,16 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from './Navbar';
 import { QuestionCard } from './QuestionCard';
-import { User, Question } from '../lib/types';
-import { Session } from 'next-auth';
+import { User } from '../lib/types';
+import { Session } from "next-auth";
 
-interface ClientDashboardProps {
+// define props type
+type Props = {
   session: Session;
-}
+};
 
-const ClientDashboard = ({ session }: ClientDashboardProps) => {
+
+export default function ClientDashboard({ session }: Props) {
   const [user, setUser] = useState<User | null>(null);
 
   const fetchUser = async () => {
@@ -86,6 +88,7 @@ const ClientDashboard = ({ session }: ClientDashboardProps) => {
         
         <div className="max-w-4xl mx-auto py-8 px-4">
           <div className=" bg-opacity-40 backdrop-blur-md rounded-lg shadow-lg p-6 mb-8 border border-white border-opacity-20">
+            <h1 className="text-xl font-bold">Welcome, {session.user?.name}</h1>
             <h2 className="text-2xl font-bold mb-4 text-black font-serif">Profile</h2>
             <div className="space-y-4">
               <div>
@@ -99,22 +102,23 @@ const ClientDashboard = ({ session }: ClientDashboardProps) => {
               <div>
                 <h3 className="text-gray-300 font-serif">Interests</h3>
                 <div className="flex flex-wrap gap-2 mt-2">
-                  {user?.interests.map((interest) => (
+                  {user?.interests?.length ? user.interests.map((interest) => (
                     <span
                       key={interest}
                       className="bg-white bg-opacity-20 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm border border-white border-opacity-30"
                     >
                       {interest}
                     </span>
-                  ))}
+                  )): <p> No Interests </p>}
                 </div>
               </div>
             </div>
           </div>
 
           <div className="space-y-8">
-            <section className=" bg-opacity-40 backdrop-blur-md rounded-lg shadow-lg p-6 border border-white border-opacity-20">
-              <h2 className="text-2xl font-bold mb-4" style={{ color: 'rgb(228, 234, 107)' }}>My Questions</h2>
+            <section className=" bg-opacity-40 backdrop-blur-md rounded-lg shadow-lg p-6 border border-white border-opacity-20"
+            aria-labelledby="my-questions-heading">
+              <h2 id="my-questions-heading" className="text-2xl font-bold mb-4" style={{ color: 'rgb(228, 234, 107)' }}>My Questions</h2>
               {(user?.questions ?? []).length > 0 ? (
                 <div className="space-y-4">
                   {user?.questions.map((question) => (
@@ -134,8 +138,9 @@ const ClientDashboard = ({ session }: ClientDashboardProps) => {
               )}
             </section>
 
-            <section className="bg-opacity-40 backdrop-blur-md rounded-lg shadow-lg p-6 border border-white border-opacity-20">
-              <h2 className="text-2xl font-bold mb-4" style={{ color: 'rgb(228, 234, 107)' }}>My Replies</h2>
+            <section className="bg-opacity-40 backdrop-blur-md rounded-lg shadow-lg p-6 border border-white border-opacity-20"
+            aria-labelledby="my-replies-heading">
+              <h2 id="my-replies-heading" className="text-2xl font-bold mb-4" style={{ color: 'rgb(228, 234, 107)' }}>My Replies</h2>
               {(user?.replies ?? []).length > 0 ? (
                 <div className="space-y-4">
                   {user?.replies.map((reply) => (
@@ -162,4 +167,3 @@ const ClientDashboard = ({ session }: ClientDashboardProps) => {
   );
 };
 
-export default ClientDashboard;

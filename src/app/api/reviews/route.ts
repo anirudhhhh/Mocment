@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth';
 import { prisma } from '@/lib/prisma';
 import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
 
-export async function GET() {
+export async function GET(): Promise<NextResponse> {
   try {
     const reviews = await prisma.review.findMany({
       orderBy: {
@@ -12,7 +12,7 @@ export async function GET() {
       include: {
         user: {
           select: {
-            name: true,
+            username: true,
             image: true
           }
         }
@@ -25,7 +25,7 @@ export async function GET() {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(request: Request): Promise<NextResponse> {
   try {
     const session = await getServerSession(authOptions);
     
@@ -34,7 +34,23 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { title, videoUrl=null, imageUrl=null, category, description, rating } = body;
+  interface RequestBody {
+  title: string;
+  videoUrl?: string | null;
+  imageUrl?: string | null;
+  category: string;
+  description: string;
+  rating: number;
+}
+
+const { 
+  title, 
+  videoUrl = null, 
+  imageUrl = null, 
+  category, 
+  description, 
+  rating 
+}: RequestBody = body;
 
     const review = await prisma.review.create({
       data: {

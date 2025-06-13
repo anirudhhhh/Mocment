@@ -2,46 +2,58 @@ import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
 import { prisma } from '@/lib/prisma';
+import { Question } from '@/generated/prisma';
+
+interface UserIdentity {
+  showName: boolean;
+  country: string;
+  name: string | null;
+}
+
+interface TransformedQuestion extends Question{
+  userIdentity: UserIdentity;
+}
 
 // GET all questions
 export async function GET() {
   try {
-    const questions = await prisma.question.findMany({
+const questions = await prisma.question.findMany({
+  include: {
+    user: {
+      select: {
+        username: true,
+        image: true,
+      },
+    },
+    replies: {
       include: {
         user: {
           select: {
-            name: true,
+            username: true,
             image: true,
           },
         },
-        replies: {
-          include: {
-            user: {
-              select: {
-                name: true,
-                image: true,
-              },
-            },
-          },
-        },
       },
-      orderBy: {
-        createdAt: 'desc',
-      },
-    });
+    },
+  },
+  orderBy: {
+    createdAt: 'desc',
+  },
+});
 
-    // Transform the questions to include userIdentity
-    const transformedQuestions = questions.map(question => ({
-      ...question,
-      userIdentity: {
-        showName: question.showName,
-        country: question.country || '',
-        name: question.showName ? question.user.name : null,
-      },
-    }));
 
-    return NextResponse.json(transformedQuestions);
-  } catch (error) {
+  // Transform the questions to include userIdentity
+  const transformedQuestions: TransformedQuestion[] = questions.map((question) => ({
+    ...question,
+    userIdentity: {
+      showName: question.showName,
+      country: question.country || '',
+      name: question.showName ? question.user.username : null,
+    },
+  }));
+
+  return NextResponse.json(transformedQuestions);
+} catch (error) {
     console.error('Error fetching questions:', error);
     return NextResponse.json({ error: 'Failed to fetch questions' }, { status: 500 });
   }
@@ -80,7 +92,7 @@ export async function POST(request: Request) {
       include: {
         user: {
           select: {
-            name: true,
+            username: true,
             image: true,
           },
         },
@@ -88,7 +100,7 @@ export async function POST(request: Request) {
           include: {
             user: {
               select: {
-                name: true,
+                username: true,
                 image: true,
               },
             },
@@ -103,7 +115,7 @@ export async function POST(request: Request) {
       userIdentity: {
         showName: question.showName,
         country: question.country || '',
-        name: question.showName ? question.user.name : null,
+        name: question.showName ? question.user.username : null,
       },
     };
 

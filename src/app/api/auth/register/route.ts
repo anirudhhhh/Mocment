@@ -2,27 +2,31 @@ import { NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 import { prisma } from '@/lib/prisma';
 
-
 export async function POST(req: Request) {
   try {
-    const { name, email, password, country } = await req.json();
+    const { username, phoneOrEmail, country, password } = await req.json();
 
     // Validate input
-    if (!name || !email || !password || !country) {
+    if (!username || !phoneOrEmail || !password || !country) {
       return NextResponse.json(
         { message: 'Missing required fields' },
         { status: 400 }
       );
     }
 
-    // Check if user already exists
-    const existingUser = await prisma.user.findUnique({
-      where: { email },
+    // Check if user already exists (by email or phone)
+    const existingUser = await prisma.user.findFirst({
+      where: {
+        OR: [
+          { email: phoneOrEmail },
+          { phone: phoneOrEmail }
+        ]
+      }
     });
 
     if (existingUser) {
       return NextResponse.json(
-        { message: 'User already exists' },
+        { message: 'User already exists with this email or phone number' },
         { status: 400 }
       );
     }
@@ -30,18 +34,22 @@ export async function POST(req: Request) {
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Determine if phoneOrEmail is email or phone
+    const isEmail = phoneOrEmail.includes('@');
+    
     // Create user
     const user = await prisma.user.create({
       data: {
-        name,
-        email,
+        username,
+        email: isEmail ? phoneOrEmail : "",
+        phone: !isEmail ? phoneOrEmail : undefined,
         country,
-        // password: hashedPassword, // Removed because 'password' is not a valid field
+        password: hashedPassword, // Store the hashed password
       },
     });
 
-    // Remove hashedPassword from response
-    const { hashedPassword: _, ...userWithoutPassword } = user;
+    // Remove password from response for security
+    const { password: _, ...userWithoutPassword } = user;
 
     return NextResponse.json(
       { message: 'User created successfully', user: userWithoutPassword },
@@ -54,4 +62,4 @@ export async function POST(req: Request) {
       { status: 500 }
     );
   }
-} 
+}

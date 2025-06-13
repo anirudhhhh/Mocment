@@ -5,10 +5,9 @@ import CategoryInput from '../app/components/Category';
 interface QuestionFormProps {
   onSubmit: (content: string, categories: string[]) => void;
   onCancel?: () => void; // make it optional
-  isAuthorized: boolean;
 }
 
-export function QuestionForm({ onSubmit , onCancel, isAuthorized }: QuestionFormProps) {
+export function QuestionForm({ onSubmit , onCancel }: QuestionFormProps) {
   const [content, setContent] = useState('');
   const [categories, setCategories] = useState<string[]>([]);
 

@@ -45,38 +45,38 @@ model VerificationToken {
 }
 
 model User {
-  id             String    @id @default(uuid())
-  name           String
-  email          String    @unique
+  id             String     @id @default(uuid())
+  username       String     @unique
+  email          String     @unique
   emailVerified  DateTime?
+  phone          String?    @unique
   country        String
-  interests      String[]  @default([])
+  password       String
+  interests      String[]   @default([])
   image          String?
-  isPremium      Boolean   @default(false)
-  createdAt      DateTime  @default(now())
+  isPremium      Boolean    @default(false)
+  createdAt      DateTime   @default(now())
   hashedPassword String?
-
-  accounts     Account[]
-  sessions     Session[]
-  questions    Question[]
-  replies      Reply[]
-  videoReviews Review[]
+  accounts       Account[]
+  sessions       Session[]
+  questions      Question[]
+  replies        Reply[]
+  videoReviews   Review[]
 }
 
 model Question {
-  id         String      @id @default(cuid())
+  id         String   @id @default(cuid())
   content    String
   categories String[]
   userId     String
-  user       User        @relation(fields: [userId], references: [id])
-  likes      Int         @default(0)
-  dislikes   Int         @default(0)
-  showName   Boolean     @default(false)
+  user       User     @relation(fields: [userId], references: [id])
+  likes      Int      @default(0)
+  dislikes   Int      @default(0)
+  showName   Boolean  @default(false)
   country    String?
-  createdAt  DateTime    @default(now())
-  updatedAt  DateTime    @updatedAt
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
   replies    Reply[]
-  weeklyStar WeeklyStar?
 
   @@index([userId])
 }
@@ -95,18 +95,6 @@ model Reply {
 
   @@index([questionId])
   @@index([userId])
-}
-
-model WeeklyStar {
-  id         String   @id @default(cuid())
-  questionId String   @unique
-  question   Question @relation(fields: [questionId], references: [id])
-  week       Int
-  year       Int
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-
-  @@unique([week, year])
 }
 
 model Review {

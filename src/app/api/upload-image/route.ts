@@ -1,4 +1,4 @@
-// api/upload-image/route.ts 
+// api/upload-image/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
@@ -10,30 +10,36 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-export async function POST(request: NextRequest) {
+// Optional: force Edge Runtime to be dynamic
+export const dynamic = 'force-dynamic';
+
+export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     const session = await getServerSession(authOptions);
     if (!session?.user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    // Get data - Changed from 'media' to 'image' to match React component
     const formData = await request.formData();
     const file = formData.get('image') as File;
-    
+
     if (!file || !(file instanceof File)) {
       return NextResponse.json({ error: 'No file provided' }, { status: 400 });
     }
 
-    // Validate file type
     if (!file.type.startsWith('image/')) {
       return NextResponse.json({ error: 'File must be an image' }, { status: 400 });
     }
 
-    const buffer = Buffer.from(await file.arrayBuffer());
+    const arrayBuffer = await file.arrayBuffer();
+    const uint8Array = new Uint8Array(arrayBuffer);
 
-    // Convert buffer to base64 and create data URI
-    const base64String = buffer.toString('base64');
+    let binary = '';
+    for (let i = 0; i < uint8Array.length; i++) {
+      binary += String.fromCharCode(uint8Array[i]);
+    }
+
+    const base64String = btoa(binary);
     const mime = file.type;
     const dataURI = `data:${mime};base64,${base64String}`;
 
@@ -46,13 +52,13 @@ export async function POST(request: NextRequest) {
       ]
     });
 
-    return NextResponse.json({ 
+    return NextResponse.json({
       imageUrl: uploadResult.secure_url,
-      success: true 
+      success: true
     });
   } catch (error) {
     console.error('Error uploading image to Cloudinary:', error);
-    return NextResponse.json({ 
+    return NextResponse.json({
       error: 'Upload to Cloudinary failed',
       details: error instanceof Error ? error.message : 'Unknown error'
     }, { status: 500 });

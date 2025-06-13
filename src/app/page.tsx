@@ -3,6 +3,7 @@
 import React from 'react';
 import { Navbar } from '../components/Navbar';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Home() {
  return (
@@ -31,7 +32,7 @@ export default function Home() {
             <p className="text-xl text-white max-w-2xl mx-auto md:mx-0 leading-relaxed font-light font-sans drop-shadow-md">
               I wrote this when I was designing this website.
             </p>
-            <img
+            <Image
               src="/frontpage.jpg"
               alt="Idea"
               className="w-full max-w-[900px] h-auto rounded-lg shadow-md"
@@ -69,11 +70,11 @@ export default function Home() {
         </div>
 
         <div className="flex justify-center gap-6 mb-12">
-          <img src="/cafe.png" alt="Idea" className="w-32 h-auto rounded-lg shadow-md" />
-          <img src="/food.png" alt="Team" className="w-32 h-auto rounded-lg shadow-md" />
-          <img src="/tropical holiday.png" alt="Privacy" className="w-32 h-auto rounded-lg shadow-md" />
-          <img src="/Studying, university, online lectures.png" alt="Privacy" className="w-32 h-auto rounded-lg shadow-md" />
-          <img src="/clothing.png" alt="Privacy" className="w-32 h-auto rounded-lg shadow-md" />
+          <Image src="/cafe.png" alt="Idea" className="w-32 h-auto rounded-lg shadow-md" />
+          <Image src="/food.png" alt="Team" className="w-32 h-auto rounded-lg shadow-md" />
+          <Image src="/tropical holiday.png" alt="Privacy" className="w-32 h-auto rounded-lg shadow-md" />
+          <Image src="/coffee.png" alt="Privacy" className="w-32 h-auto rounded-lg shadow-md" />
+          <Image src="/clothing.png" alt="Privacy" className="w-32 h-auto rounded-lg shadow-md" />
         </div>
 
         <div className="text-2xl text-white text-center mb-8 drop-shadow-lg">
@@ -150,7 +151,7 @@ export default function Home() {
 
           {/* Right Image */}
           <div className="md:w-1/2 flex justify-center">
-            <img src="/contact-hello-illustration.png" alt="Hello Illustration" className="w-64 h-auto" />
+            <Image src="/contact-hello-illustration.png" alt="Hello Illustration" className="w-64 h-auto" />
           </div>
         </div>
       </div>

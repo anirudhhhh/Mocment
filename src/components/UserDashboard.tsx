@@ -1,5 +1,5 @@
 import React from 'react';
-import { User, Question } from '../lib/types';
+import { User } from '../lib/types';
 import { QuestionCard } from './QuestionCard';
 
 interface UserDashboardProps {
