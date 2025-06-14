@@ -215,7 +215,7 @@ const config = {
       "fromEnvVar": null
     },
     "config": {
-      "engineType": "library"
+      "engineType": "binary"
     },
     "binaryTargets": [
       {
@@ -226,6 +226,10 @@ const config = {
       {
         "fromEnvVar": null,
         "value": "windows"
+      },
+      {
+        "fromEnvVar": null,
+        "value": "debian-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
@@ -243,6 +247,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -251,8 +256,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider      = \"prisma-client-js\"\n  output        = \"../src/generated/prisma\"\n  binaryTargets = [\"native\", \"windows\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Account {\n  id                String  @id @default(cuid())\n  userId            String\n  type              String\n  provider          String\n  providerAccountId String\n  refresh_token     String? @db.Text\n  access_token      String? @db.Text\n  expires_at        Int?\n  token_type        String?\n  scope             String?\n  id_token          String? @db.Text\n  session_state     String?\n\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@unique([provider, providerAccountId])\n}\n\nmodel Session {\n  id           String   @id @default(cuid())\n  sessionToken String   @unique\n  userId       String\n  expires      DateTime\n  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n}\n\nmodel VerificationToken {\n  identifier String\n  token      String   @unique\n  expires    DateTime\n\n  @@unique([identifier, token])\n}\n\nmodel User {\n  id             String     @id @default(uuid())\n  username       String     @unique\n  email          String     @unique\n  emailVerified  DateTime?\n  phone          String?    @unique\n  country        String\n  password       String\n  interests      String[]   @default([])\n  image          String?\n  isPremium      Boolean    @default(false)\n  createdAt      DateTime   @default(now())\n  hashedPassword String?\n  accounts       Account[]\n  sessions       Session[]\n  questions      Question[]\n  replies        Reply[]\n  videoReviews   Review[]\n}\n\nmodel Question {\n  id         String   @id @default(cuid())\n  content    String\n  categories String[]\n  userId     String\n  user       User     @relation(fields: [userId], references: [id])\n  likes      Int      @default(0)\n  dislikes   Int      @default(0)\n  showName   Boolean  @default(false)\n  country    String?\n  createdAt  DateTime @default(now())\n  updatedAt  DateTime @updatedAt\n  replies    Reply[]\n\n  @@index([userId])\n}\n\nmodel Reply {\n  id         String   @id @default(cuid())\n  content    String\n  questionId String\n  question   Question @relation(fields: [questionId], references: [id])\n  userId     String\n  user       User     @relation(fields: [userId], references: [id])\n  likes      Int      @default(0)\n  dislikes   Int      @default(0)\n  createdAt  DateTime @default(now())\n  updatedAt  DateTime @updatedAt\n\n  @@index([questionId])\n  @@index([userId])\n}\n\nmodel Review {\n  id           String   @id @default(cuid())\n  title        String\n  videoUrl     String? // Optional URL to the uploaded video\n  imageUrl     String? // Optional URL to the uploaded image\n  thumbnailUrl String? // Optional thumbnail URL\n  category     String\n  description  String\n  rating       Int\n  views        Int      @default(0)\n  createdAt    DateTime @default(now())\n  updatedAt    DateTime @updatedAt\n  user         User     @relation(fields: [userId], references: [id])\n  userId       String\n  agreements   Int      @default(0)\n}\n",
-  "inlineSchemaHash": "a1c0a4c92b91bb21bf1a11510b41317216762268474f7bde707c2fe4d95a0970",
+  "inlineSchema": "generator client {\n  provider      = \"prisma-client-js\"\n  output        = \"../src/generated/prisma\"\n  binaryTargets = [\"native\", \"windows\", \"debian-openssl-3.0.x\"]\n  engineType    = \"binary\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Account {\n  id                String  @id @default(cuid())\n  userId            String\n  type              String\n  provider          String\n  providerAccountId String\n  refresh_token     String? @db.Text\n  access_token      String? @db.Text\n  expires_at        Int?\n  token_type        String?\n  scope             String?\n  id_token          String? @db.Text\n  session_state     String?\n\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@unique([provider, providerAccountId])\n}\n\nmodel Session {\n  id           String   @id @default(cuid())\n  sessionToken String   @unique\n  userId       String\n  expires      DateTime\n  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n}\n\nmodel VerificationToken {\n  identifier String\n  token      String   @unique\n  expires    DateTime\n\n  @@unique([identifier, token])\n}\n\nmodel User {\n  id             String     @id @default(uuid())\n  username       String     @unique\n  email          String     @unique\n  emailVerified  DateTime?\n  phone          String?    @unique\n  country        String\n  password       String\n  interests      String[]   @default([])\n  image          String?\n  isPremium      Boolean    @default(false)\n  createdAt      DateTime   @default(now())\n  hashedPassword String?\n  accounts       Account[]\n  sessions       Session[]\n  questions      Question[]\n  replies        Reply[]\n  videoReviews   Review[]\n}\n\nmodel Question {\n  id         String   @id @default(cuid())\n  content    String\n  categories String[]\n  userId     String\n  user       User     @relation(fields: [userId], references: [id])\n  likes      Int      @default(0)\n  dislikes   Int      @default(0)\n  showName   Boolean  @default(false)\n  country    String?\n  createdAt  DateTime @default(now())\n  updatedAt  DateTime @updatedAt\n  replies    Reply[]\n\n  @@index([userId])\n}\n\nmodel Reply {\n  id         String   @id @default(cuid())\n  content    String\n  questionId String\n  question   Question @relation(fields: [questionId], references: [id])\n  userId     String\n  user       User     @relation(fields: [userId], references: [id])\n  likes      Int      @default(0)\n  dislikes   Int      @default(0)\n  createdAt  DateTime @default(now())\n  updatedAt  DateTime @updatedAt\n\n  @@index([questionId])\n  @@index([userId])\n}\n\nmodel Review {\n  id           String   @id @default(cuid())\n  title        String\n  videoUrl     String? // Optional URL to the uploaded video\n  imageUrl     String? // Optional URL to the uploaded image\n  thumbnailUrl String? // Optional thumbnail URL\n  category     String\n  description  String\n  rating       Int\n  views        Int      @default(0)\n  createdAt    DateTime @default(now())\n  updatedAt    DateTime @updatedAt\n  user         User     @relation(fields: [userId], references: [id])\n  userId       String\n  agreements   Int      @default(0)\n}\n",
+  "inlineSchemaHash": "981dbc920229996afe960cf62561663b11b853f3f2cca29c886d27ae23d5acc2",
   "copyEngine": true
 }
 config.dirname = '/'
