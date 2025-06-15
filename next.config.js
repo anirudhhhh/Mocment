@@ -15,6 +15,10 @@ const nextConfig = {
     }
     return config
   },
+  // Ensure proper handling of environment variables
+  env: {
+    NODE_ENV: process.env.NODE_ENV,
+  },
 }
 
 module.exports = nextConfig 
