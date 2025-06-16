@@ -14,6 +14,7 @@
     "@types/uuid": "^9.0.7",
     "bcryptjs": "^3.0.2",
     "cloudinary": "^2.6.1",
+    "critters": "^0.0.23",
     "formidable": "^3.5.4",
     "lucide-react": "^0.511.0",
     "next": "15.3.2",
