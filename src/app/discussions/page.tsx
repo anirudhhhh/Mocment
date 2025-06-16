@@ -10,8 +10,7 @@ import { Question, Reply } from '../../lib/types';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 
-
-export default function Discussions() {
+const Discussions: React.FC = () => {
   const { data: session } = useSession();
   const currentUserId = session?.user?.id || '';
   const [discussions, setDiscussions] = useState<Question[]>([]);
@@ -104,50 +103,74 @@ export default function Discussions() {
     }
   };
 
-  const handleLike = (questionId: string) => {
-    setDiscussions(
-      discussions.map((q) => {
-        if (q.id !== questionId) return q;
+  const handleLike = async (questionId: string) => {
+    try {
+      const response = await fetch(`/api/questions/${questionId}/like`, {
+        method: 'POST',
+      });
 
-        const alreadyLiked = q.likedBy.includes(currentUserId);
-        const alreadyDisliked = q.dislikedBy.includes(currentUserId);
+      if (!response.ok) {
+        throw new Error('Failed to like question');
+      }
 
-        return {
-          ...q,
-          likes: alreadyLiked ? q.likes - 1 : q.likes + 1,
-          dislikes: alreadyDisliked ? q.dislikes - 1 : q.dislikes,
-          likedBy: alreadyLiked
-            ? q.likedBy.filter((id) => id !== currentUserId)
-            : [...q.likedBy, currentUserId],
-          dislikedBy: alreadyDisliked
-            ? q.dislikedBy.filter((id) => id !== currentUserId)
-            : q.dislikedBy,
-        };
-      })
-    );
+      setDiscussions(
+        discussions.map((q: Question) => {
+          if (q.id !== questionId) return q;
+
+          const alreadyLiked = q.likedBy.includes(currentUserId);
+          const alreadyDisliked = q.dislikedBy.includes(currentUserId);
+
+          return {
+            ...q,
+            likes: alreadyLiked ? q.likes - 1 : q.likes + 1,
+            dislikes: alreadyDisliked ? q.dislikes - 1 : q.dislikes,
+            likedBy: alreadyLiked
+              ? q.likedBy.filter((id: string) => id !== currentUserId)
+              : [...q.likedBy, currentUserId],
+            dislikedBy: alreadyDisliked
+              ? q.dislikedBy.filter((id: string) => id !== currentUserId)
+              : q.dislikedBy,
+          };
+        })
+      );
+    } catch (error) {
+      console.error('Error liking question:', error);
+    }
   };
 
-  const handleDislike = (questionId: string) => {
-    setDiscussions(
-      discussions.map((q) => {
-        if (q.id !== questionId) return q;
+  const handleDislike = async (questionId: string) => {
+    try {
+      const response = await fetch(`/api/questions/${questionId}/dislike`, {
+        method: 'POST',
+      });
 
-        const alreadyDisliked = q.dislikedBy.includes(currentUserId);
-        const alreadyLiked = q.likedBy.includes(currentUserId);
+      if (!response.ok) {
+        throw new Error('Failed to dislike question');
+      }
 
-        return {
-          ...q,
-          dislikes: alreadyDisliked ? q.dislikes - 1 : q.dislikes + 1,
-          likes: alreadyLiked ? q.likes - 1 : q.likes,
-          dislikedBy: alreadyDisliked
-            ? q.dislikedBy.filter((id) => id !== currentUserId)
-            : [...q.dislikedBy, currentUserId],
-          likedBy: alreadyLiked
-            ? q.likedBy.filter((id) => id !== currentUserId)
-            : q.likedBy,
-        };
-      })
-    );
+      setDiscussions(
+        discussions.map((q: Question) => {
+          if (q.id !== questionId) return q;
+
+          const alreadyDisliked = q.dislikedBy.includes(currentUserId);
+          const alreadyLiked = q.likedBy.includes(currentUserId);
+
+          return {
+            ...q,
+            dislikes: alreadyDisliked ? q.dislikes - 1 : q.dislikes + 1,
+            likes: alreadyLiked ? q.likes - 1 : q.likes,
+            dislikedBy: alreadyDisliked
+              ? q.dislikedBy.filter((id: string) => id !== currentUserId)
+              : [...q.dislikedBy, currentUserId],
+            likedBy: alreadyLiked
+              ? q.likedBy.filter((id: string) => id !== currentUserId)
+              : q.likedBy,
+          };
+        })
+      );
+    } catch (error) {
+      console.error('Error disliking question:', error);
+    }
   };
 
   const handleReply = (questionId: string) => {
@@ -160,67 +183,97 @@ export default function Discussions() {
     setReplyingTo(null);
   };
 
-  const handleSubmitReply = (questionId: string, content: string, contentType: 'text' | 'video', videoUrl?: string) => {
-    const newReply: Reply = {
-      id: Math.random().toString(36).substr(2, 9),
-      content,
-      contentType,
-      videoUrl,
-      questionId,
-      userId: currentUserId,
-      likes: 0,
-      dislikes: 0,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      user: {
-        name: 'From Mocment',
-        image: 'https://via.placeholder.com/40',
-      },
-    };
+  const handleSubmitReply = async (questionId: string, content: string, contentType: 'text' | 'video', videoUrl?: string) => {
+    try {
+      const response = await fetch('/api/replies', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          content,
+          contentType,
+          videoUrl,
+          questionId,
+        }),
+      });
 
-    setDiscussions(
-      discussions.map((q) =>
-        q.id === questionId
-          ? { ...q, replies: [...(q.replies || []), newReply] }
-          : q
-      )
-    );
-    setReplyingTo(null);
+      if (!response.ok) {
+        throw new Error('Failed to post reply');
+      }
+
+      const newReply = await response.json();
+      
+      setDiscussions(
+        discussions.map((q) =>
+          q.id === questionId
+            ? { ...q, replies: [...(q.replies || []), newReply] }
+            : q
+        )
+      );
+      setReplyingTo(null);
+    } catch (error) {
+      console.error('Error posting reply:', error);
+    }
   };
 
-  const handleReplyLike = (questionId: string, replyId: string) => {
-    setDiscussions(
-      discussions.map((q) =>
-        q.id === questionId
-          ? {
-              ...q,
-              replies: q.replies.map((r) =>
-                r.id === replyId ? { ...r, likes: r.likes + 1 } : r
-              ),
-            }
-          : q
-      )
-    );
+  const handleReplyLike = async (questionId: string, replyId: string) => {
+    try {
+      const response = await fetch(`/api/replies/${replyId}/like`, {
+        method: 'POST',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to like reply');
+      }
+
+      setDiscussions(
+        discussions.map((q: Question) =>
+          q.id === questionId
+            ? {
+                ...q,
+                replies: q.replies.map((r: Reply) =>
+                  r.id === replyId ? { ...r, likes: r.likes + 1 } : r
+                ),
+              }
+            : q
+        )
+      );
+    } catch (error) {
+      console.error('Error liking reply:', error);
+    }
   };
 
-  const handleReplyDislike = (questionId: string, replyId: string) => {
-    setDiscussions(
-      discussions.map((q) =>
-        q.id === questionId
-          ? {
-              ...q,
-              replies: q.replies.map((r) =>
-                r.id === replyId ? { ...r, dislikes: r.dislikes + 1 } : r
-              ),
-            }
-          : q
-      )
-    );
+  const handleReplyDislike = async (questionId: string, replyId: string) => {
+    try {
+      const response = await fetch(`/api/replies/${replyId}/dislike`, {
+        method: 'POST',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to dislike reply');
+      }
+
+      setDiscussions(
+        discussions.map((q: Question) =>
+          q.id === questionId
+            ? {
+                ...q,
+                replies: q.replies.map((r: Reply) =>
+                  r.id === replyId ? { ...r, dislikes: r.dislikes + 1 } : r
+                ),
+              }
+            : q
+        )
+      );
+    } catch (error) {
+      console.error('Error disliking reply:', error);
+    }
   };
 
   const filteredDiscussions = selectedCategory === 'all'
     ? discussions
-    : discussions.filter(q => q.categories.includes(selectedCategory));
+    : discussions.filter((q: Question) => q.categories.includes(selectedCategory));
 
 return (
   <>
@@ -481,3 +534,4 @@ return (
   </>
 );
 }
+export default Discussions;
