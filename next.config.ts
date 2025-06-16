@@ -6,10 +6,13 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true, // Disables ESLint build errors
   },
-  //for railway deployment
+  // For railway deployment
   compress: true,
   poweredByHeader: false,
-  // Increase the memory limit for the build
+  experimental: {
+    optimizeCss: true,
+  },
+  // Webpack optimization
   webpack: (config) => {
     // Optimize bundle size
     config.optimization = {
@@ -18,6 +21,8 @@ const nextConfig: NextConfig = {
     }
     return config
   },
+  // Remove any env configuration that sets NODE_ENV
+  // NODE_ENV is automatically handled by Next.js
 };
 
 export default nextConfig;
