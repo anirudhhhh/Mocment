@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true, // Disables ESLint build errors
   },
   // Increase the memory limit for the build
-  webpack: (config, { isServer }) => {
+  webpack: (config) => {
     // Optimize bundle size
     config.optimization = {
       ...config.optimization,
