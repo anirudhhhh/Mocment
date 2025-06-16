@@ -2,7 +2,6 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   output: 'standalone',
   experimental: {
     optimizeCss: true,
@@ -18,10 +17,6 @@ const nextConfig: NextConfig = {
       minimize: true,
     }
     return config
-  },
-  // Ensure proper handling of environment variables
-  env: {
-    NODE_ENV: process.env.NODE_ENV,
   },
 };
 
