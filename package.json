@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "./node_modules/.bin/prisma generate && next build",
+    "build": "next build",
     "start": "next start -p ${PORT:-3000}",
     "lint": "next lint"
   },
