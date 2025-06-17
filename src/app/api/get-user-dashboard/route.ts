@@ -1,7 +1,7 @@
 // app/api/get-user-dashboard/route.ts
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
+import { authOptions } from '../auth/[...nextauth]/authOptions';
 import { prisma } from '@/lib/prisma';
 
 export async function GET() {

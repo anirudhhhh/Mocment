@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Navbar } from '../../components/Navbar';
-import ReviewCard from '@/components/ReviewCard';
+import ReviewCard from '../../components/ReviewCard';
 import {toast} from 'react-hot-toast';
 
 interface VideoReview {
