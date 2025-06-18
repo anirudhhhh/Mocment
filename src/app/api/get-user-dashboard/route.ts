@@ -1,8 +1,8 @@
 // app/api/get-user-dashboard/route.ts
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../auth/[...nextauth]/authOptions';
-import { prisma } from '../../../lib/prisma';
+import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
+import { prisma } from '@/lib/prisma';
 
 export async function GET() {
   const session = await getServerSession(authOptions);
@@ -55,7 +55,7 @@ export async function GET() {
   // Transform questions to include userIdentity
   const transformedUser = {
     ...user,
-    questions: user.questions.map(question => ({
+    questions: user.questions.map((question: any) => ({
       ...question,
       userIdentity: {
         showName: question.showName,

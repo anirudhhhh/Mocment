@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../auth/[...nextauth]/authOptions';
-import { prisma } from '../../../lib/prisma';
+import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
+import { prisma } from '@/lib/prisma';
 import { Question } from '@/generated/prisma';
 
 interface UserIdentity {
@@ -43,7 +43,7 @@ const questions = await prisma.question.findMany({
 
 
   // Transform the questions to include userIdentity
-  const transformedQuestions: TransformedQuestion[] = questions.map((question) => ({
+  const transformedQuestions: TransformedQuestion[] = questions.map((question: any) => ({
     ...question,
     userIdentity: {
       showName: question.showName,
