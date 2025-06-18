@@ -27,6 +27,9 @@ RUN ls -la
 # Install dependencies again to ensure everything is in place
 RUN npm install
 
+# Generate Prisma client after installing dependencies
+RUN npx prisma generate
+
 # Run build with increased memory limit
 ENV NODE_OPTIONS="--max-old-space-size=4096"
 RUN npm run build
@@ -65,9 +68,4 @@ ENV HOSTNAME "0.0.0.0"
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
     CMD wget --no-verbose --tries=1 --spider http://localhost:3000/ || exit 1
 
-CMD ["node", "server.js"] 
-
-# Generate Prisma client
-RUN npx prisma generate
-
-RUN npm run build
+CMD ["node", "server.js"]
